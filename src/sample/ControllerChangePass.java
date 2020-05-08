@@ -22,7 +22,7 @@ import java.util.ResourceBundle;
 
 public class ControllerChangePass implements Initializable {
     @FXML
-    private TextField changeName;
+    private Text changeName;
     @FXML
     private PasswordField changePass,newPass,confirmPass;
     @FXML

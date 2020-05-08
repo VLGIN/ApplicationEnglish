@@ -48,11 +48,11 @@ public class HistoryController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Student test = Main.students[Main.dem];
-        try {
+        /*try {
             test.setPoint();
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+        }*/
         name.setText(test.getFullName());
         XYChart.Series<String, Number> series = getSeries(test);
         lineChart.getData().add(series);

@@ -109,6 +109,7 @@ public class ControllerLogin {
                // Main.student.setUserName(loginID.getText());
                 Main.students[Main.dem].setData(loginID.getText());
                 System.out.println(Main.students[Main.dem].getFullName());
+                Main.students[Main.dem].setPoint();
                 setSceneHome(event);
             }
         }

@@ -293,6 +293,7 @@ public class PlayVideo implements Initializable {
             result = (float) (10*(11-time/videoduration)/11);
             result = Math.round(result*10);
             result = result/10;
+            Main.students[Main.dem].addHistory(result);
             Main.students[Main.dem].insertHistory(result);
             showResult();
             System.out.println(result);
