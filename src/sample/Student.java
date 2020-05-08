@@ -151,12 +151,12 @@ public class Student {
         this.now = now;
     }
 
-    public void addHistory(double diem){
+    public void addHistory(float diem){
         histories[now] = new History(now+1, diem);
         now++;
     }
 
-    public void editHistory(int vong, double diem){
+    public void editHistory(int vong, float diem){
 
         histories[vong-1].setDiem(diem);
     }
@@ -232,9 +232,9 @@ public class Student {
                 "'"+getID() +"'";
         var result = conn.prepareStatement(sql);
         var resultSet = result.executeQuery();
-        double a = 0;
+        float a = 0;
         while (resultSet.next()) {
-            a = (double) (Math.floor(resultSet.getFloat("Point")*10)/10);
+            a = (resultSet.getFloat("Point")*10)/10;
             /*histories[now] = new History();
             histories[now].setDiem(a);
             histories[now].setVong(now+1);*/

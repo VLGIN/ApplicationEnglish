@@ -108,6 +108,11 @@ public class ControllerLogin {
             if(verifyLogin == true){
                // Main.student.setUserName(loginID.getText());
                 Main.students[Main.dem].setData(loginID.getText());
+                try{
+                    Main.students[Main.dem].setPoint();
+                } catch (SQLException e){
+                    e.printStackTrace();
+                }
                 System.out.println(Main.students[Main.dem].getFullName());
                 Main.students[Main.dem].setPoint();
                 setSceneHome(event);

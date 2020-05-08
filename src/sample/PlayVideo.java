@@ -81,7 +81,7 @@ public class PlayVideo implements Initializable {
     private String arr[]= Arrays.stream(arrTemp).filter(values->values!=null&&values.length()>0).toArray(size->new String[size]);
     private String[] guide=lesson.getGuide();
     private int line=lesson.getLine();
-    private int sizeForOneLine[]=lesson.getSizeForOneLine();
+    private int sizeForOneLine[]=lesson.getIndexFirstForEachLine();
 
     private int temp=0;
     private static int i = 0;
@@ -138,8 +138,8 @@ public class PlayVideo implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        if(line<=6){
-            guideAnswer.setText("A: "+guide[0]);
+        if(line<4){
+            guideAnswer.setText("A: "+guide[0]+"\nB:");
         }
         else{
             guideAnswer.setText("A: "+guide[0]+"\n"+"B: "+guide[1]+"\nA: ");
@@ -261,9 +261,13 @@ public class PlayVideo implements Initializable {
         });
     }
 
+    private int temporary=0;
     // check answer
     public void checkAnswer() throws IOException, SQLException {
-
+        if(temporary==0 &&i==0){
+            System.out.println(arr[i]);
+            temporary++;
+        }
         try {
             if (check.getText().charAt(check.getText().length() - 1) != arr[i].charAt(check.getText().length() - 1)) {
                 check.deletePreviousChar();
