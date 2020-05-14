@@ -20,11 +20,20 @@ public class Student {
     private int age;
     private String gender;
     private String edu;
-    private History[] histories = new History[100];
-    private int now = 0;
+    private History[][] histories = new History[3][100];
+    private int[] now = new int[3];
     private double[] data = new double[100];
     private int sum = 0;
     private String level;
+    private int baiso;
+
+    public int getBaiso() {
+        return baiso;
+    }
+
+    public void setBaiso(int baiso) {
+        this.baiso = baiso;
+    }
 
     public int getID() {
         return ID;
@@ -43,8 +52,9 @@ public class Student {
     }
 
     public Student(){
-        histories = new History[100];
-        now = 0;
+        now[0] = 0;
+        now[1] = 0;
+        now[2] = 0;
     }
 
     public String getUserName() {
@@ -135,30 +145,25 @@ public class Student {
         this.edu = edu;
     }
 
-    public History[] getHistories() {
+    public History[][] getHistories() {
         return histories;
     }
 
-    public void setHistories(History[] histories) {
+    public void setHistories(History[][] histories) {
         this.histories = histories;
     }
 
-    public int getNow() {
+    public int[] getNow() {
         return now;
     }
 
-    public void setNow(int now) {
+    public void setNow(int[] now) {
         this.now = now;
     }
 
-    public void addHistory(float diem){
-        histories[now] = new History(now+1, diem);
-        now++;
-    }
-
-    public void editHistory(int vong, float diem){
-
-        histories[vong-1].setDiem(diem);
+    public void editHistory(float diem){
+        histories[Integer.parseInt(level)-1][baiso-1] = new History(baiso, diem);
+        now[Integer.parseInt(level)-1] = now[Integer.parseInt(level)-1] > baiso? now[Integer.parseInt(level)-1]: baiso;
     }
     public String checkLogin(String user) throws SQLException {
         var conn = MConnection.getInstance().getConnection();
@@ -238,7 +243,7 @@ public class Student {
             /*histories[now] = new History();
             histories[now].setDiem(a);
             histories[now].setVong(now+1);*/
-            addHistory(a);
+            //addHistory(a);
             /*now++;*/
         }
     }
