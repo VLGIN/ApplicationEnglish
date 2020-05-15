@@ -52,9 +52,9 @@ public class Student {
     }
 
     public Student(){
-        now[0] = 0;
-        now[1] = 0;
-        now[2] = 0;
+        now[0] = 1;
+        now[1] = 1;
+        now[2] = 1;
     }
 
     public String getUserName() {

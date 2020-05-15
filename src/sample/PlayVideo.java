@@ -139,7 +139,7 @@ public class PlayVideo implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-
+        System.out.println(Arrays.toString(arr));
         if(line<4){
             guideAnswer.setText("A: "+guide[0]+"\nB: ");
         }
@@ -302,23 +302,44 @@ public class PlayVideo implements Initializable {
             if(result<0)
                 result=0;
 
-            Main.students[Main.dem].editHistory(result);
-            Main.students[Main.dem].insertHistory(result);
             showResult();
             System.out.println(result);
             i = 0;
         }
     }
 
-    public void showResult() throws IOException {
 
-        if(result>=9){
+    public void updateLessonComplete() throws SQLException {
+        int level=ControllerChallenge.level;
+        int lesson=ControllerChallenge.lesson;
+        Main.students[Main.dem].getNow()[level-1]=lesson;
+
+
+        /*Create function insert into database saved lesson is completed
+
+
+
+
+         */
+
+
+
+        //insert result into database
+        Main.students[Main.dem].editHistory(result);
+        Main.students[Main.dem].insertHistory(result);
+    }
+
+    public void showResult() throws IOException, SQLException {
+
+        if(result>=7.5){
             Alert alert=new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("App");
 
             alert.setHeaderText("Results:");
             alert.setContentText("Congratulation, your score is "+result);
             alert.showAndWait();
+
+            updateLessonComplete();
 
             Parent root = FXMLLoader.load(getClass().getResource("challenge.fxml"));
             Stage window = (Stage)time.getScene().getWindow();

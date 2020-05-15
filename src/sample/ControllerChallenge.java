@@ -37,7 +37,7 @@ public class ControllerChallenge implements Initializable {
     private GridPane gridPane;
     @FXML
     private Button setButton;
-    private int lesson=0;
+    static int lesson=0;
     static int level;
     public final static int MAX = 10;
 
@@ -141,9 +141,14 @@ public class ControllerChallenge implements Initializable {
         }
     }
 
-//    public boolean checkLession(int level){
-//
-//    }
+    public boolean checkLession(int level){
+        int temp[]=Main.students[Main.dem].getNow();
+        System.out.println(temp[level-1]);
+        if(lesson>temp[level-1]){
+            return false;
+        }
+        return true;
+    }
     public void openAudio(ActionEvent event,String a,String b) throws IOException {
         getPath(event,a,b);
         String temp=textChallenge.getText();
@@ -156,20 +161,21 @@ public class ControllerChallenge implements Initializable {
         else{
             level=3;
         }
-        setSceneAudio(event);
-//        if(checkLession(level)){
-//            setSceneAudio(event);
-//        }
-//        else{
-//            Alert alert=new Alert(Alert.AlertType.INFORMATION);
-//            alert.setTitle("Warring");
-//
-//            alert.setHeaderText("Results:");
-//            alert.setContentText("Sorry, You can't study this lesson because in recent\n" +
-//                    "because at this time you haven't completed a few previous lessons" +
-//                    "So please complete the previous lesson before study this lesson");
-//            alert.showAndWait();
-//        }
+
+        System.out.println(lesson);
+        if(checkLession(level)){
+            setSceneAudio(event);
+        }
+        else{
+            Alert alert=new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Warring");
+
+            alert.setHeaderText("Results:");
+            alert.setContentText("Sorry, You can't study this lesson because in recent\n" +
+                    "because at this time you haven't completed a few previous lessons" +
+                    "So please complete the previous lesson before study this lesson");
+            alert.showAndWait();
+        }
     }
     public void setSceneAudio(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("play.fxml"));
