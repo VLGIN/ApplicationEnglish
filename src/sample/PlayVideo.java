@@ -302,7 +302,7 @@ public class PlayVideo implements Initializable {
             if(result<0)
                 result=0;
 
-            Main.students[Main.dem].addHistory(result);
+            Main.students[Main.dem].editHistory(result);
             Main.students[Main.dem].insertHistory(result);
             showResult();
             System.out.println(result);

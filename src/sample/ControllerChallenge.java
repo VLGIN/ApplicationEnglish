@@ -96,8 +96,11 @@ public class ControllerChallenge implements Initializable {
 
     public void setAction(String a,String b){
         for(int i=0;i<MAX;i++){
+            int finalI = i;
             hl[i].setOnAction(event -> {
                 try {
+                    Main.students[Main.dem].setBaiso(finalI +1);
+                    System.out.println(Main.students[Main.dem].getBaiso());
                     openAudio(event,a,b);
                 } catch (IOException e) {
                     e.printStackTrace();
