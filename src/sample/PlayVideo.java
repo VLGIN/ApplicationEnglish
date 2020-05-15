@@ -138,8 +138,10 @@ public class PlayVideo implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+
         if(line<4){
-            guideAnswer.setText("A: "+guide[0]+"\nB:");
+            guideAnswer.setText("A: "+guide[0]+"\nB: ");
         }
         else{
             guideAnswer.setText("A: "+guide[0]+"\n"+"B: "+guide[1]+"\nA: ");
@@ -297,6 +299,9 @@ public class PlayVideo implements Initializable {
             result = (float) (10*(11-time/videoduration)/11);
             result = Math.round(result*10);
             result = result/10;
+            if(result<0)
+                result=0;
+
             Main.students[Main.dem].addHistory(result);
             Main.students[Main.dem].insertHistory(result);
             showResult();
@@ -306,6 +311,7 @@ public class PlayVideo implements Initializable {
     }
 
     public void showResult() throws IOException {
+
         if(result>=9){
             Alert alert=new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("App");
