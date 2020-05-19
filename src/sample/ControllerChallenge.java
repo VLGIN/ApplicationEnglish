@@ -144,7 +144,7 @@ public class ControllerChallenge implements Initializable {
     public boolean checkLession(int level){
         int temp[]=Main.students[Main.dem].getNow();
         System.out.println(temp[level-1]);
-        if(lesson>temp[level-1]){
+        if(lesson>temp[level-1]+1){
             return false;
         }
         return true;
