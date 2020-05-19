@@ -31,7 +31,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 
-public class PlayVideo implements Initializable {
+public class ControllerPlayVideo implements Initializable {
     @FXML
     private MediaView movie;
 
@@ -112,7 +112,7 @@ public class PlayVideo implements Initializable {
     };
 
 
-    public PlayVideo() throws IOException {
+    public ControllerPlayVideo() throws IOException {
     }
 
 
@@ -312,21 +312,27 @@ public class PlayVideo implements Initializable {
     public void updateLessonComplete() throws SQLException {
         int level=ControllerChallenge.level;
         int lesson=ControllerChallenge.lesson;
-        Main.students[Main.dem].getNow()[level-1]=lesson;
+        if(Main.students[Main.dem].getNow()[level-1]<level){
+            Main.students[Main.dem].getNow()[level-1]= lesson;
+        }
 
 
-        /*Create function insert into database saved lesson is completed
+        //Create function insert into database saved lesson is completed
+        float oldPoint = Main.students[Main.dem].getPoint();
+        if(oldPoint == 0 ){
+            Main.students[Main.dem].insertHistory(result);
+        }
+        else if (result > oldPoint){
+            Main.students[Main.dem].updatePoint(result);
+        }
 
 
-
-
-         */
 
 
 
         //insert result into database
         Main.students[Main.dem].editHistory(result);
-        Main.students[Main.dem].insertHistory(result);
+       /* Main.students[Main.dem].insertHistory(result);*/
     }
 
     public void showResult() throws IOException, SQLException {

@@ -52,9 +52,9 @@ public class Student {
     }
 
     public Student(){
-        now[0] = 1;
+        /*now[0] = 1;
         now[1] = 1;
-        now[2] = 1;
+        now[2] = 1;*/
     }
 
     public String getUserName() {
@@ -161,9 +161,20 @@ public class Student {
         this.now = now;
     }
 
-    public void editHistory(float diem){
+    public void editHistory(float diem) throws SQLException {
         histories[Integer.parseInt(level)-1][baiso-1] = new History(baiso, diem);
         now[Integer.parseInt(level)-1] = now[Integer.parseInt(level)-1] > baiso? now[Integer.parseInt(level)-1]: baiso;
+        int a = now[Integer.parseInt(level)-1];
+        updateMaxValue(a);
+    }
+    public void updateMaxValue(int value) throws SQLException {
+        var conn = MConnection.getInstance().getConnection();
+        Statement stm = conn.createStatement();
+        stm.executeUpdate("update State set MaxValue = '"
+                +  +value + "'"
+                + "where ID ='"
+                + ID + "'and Level ='" + level + "';");
+        System.out.println("Update password successful");
     }
     public String checkLogin(String user) throws SQLException {
         var conn = MConnection.getInstance().getConnection();
@@ -192,10 +203,81 @@ public class Student {
     public void insertHistory(float point) throws SQLException {
         var conn = MConnection.getInstance().getConnection();
         Statement stm = conn.createStatement();
-        stm.executeUpdate("insert into History(CustomerID,Level,Point) values ('"+getID()+"','"+getLevel()+"','"+point
+        stm.executeUpdate("insert into History(CustomerID,Level,Lesson,Point) values ('"+getID()+"','"+getLevel()+"','"
+                +getBaiso()+"','"+point
                 + "')");
         System.out.println("Update point to History successful");
     }
+
+    public void insertHistory() throws SQLException {
+        var conn = MConnection.getInstance().getConnection();
+        Statement stm = conn.createStatement();
+        stm.executeUpdate("insert into History(CustomerID,Level,Lesson,Point) values ('"+getID()+"','"+getLevel()+"','"
+                +getBaiso()/*+"','"+point*/
+                + "')");
+        System.out.println("Update point to History successful");
+    }
+
+    // get Point and compare with the new Point
+    public float getPoint() throws SQLException {
+        var conn = MConnection.getInstance().getConnection();
+        var sql = "SELECT Point FROM dbo.History  where CustomerID ='"
+                + ID + "'and Level ='" + level + "'and Lesson ='" + baiso + "';";
+        var result = conn.prepareStatement(sql);
+        var resultSet = result.executeQuery();
+        float a = (float) 0.0;
+        while (resultSet.next()) {
+            a = resultSet.getFloat("Point");
+        }
+        return a;
+    }
+
+    public void insertState() throws SQLException {
+        var conn = MConnection.getInstance().getConnection();
+        var sql = "SELECT ID FROM dbo.State  where ID ='"
+                + ID + "';";
+        var result = conn.prepareStatement(sql);
+        var resultSet = result.executeQuery();
+        if (!resultSet.next()) {
+            subInsertState();
+        }
+        else{
+            setNow();
+        }
+    }
+    public void setNow() throws SQLException {
+        var conn = MConnection.getInstance().getConnection();
+        var sql = "SELECT MaxValue FROM dbo.State  where ID ='"
+                + ID + "';";
+        var result = conn.prepareStatement(sql);
+        var resultSet = result.executeQuery();
+        int i = 0;
+        while (resultSet.next()) {
+            now[i] = resultSet.getInt("MaxValue");
+            i++;
+        }
+    }
+    public void subInsertState() throws SQLException {
+        var conn = MConnection.getInstance().getConnection();
+        Statement stm = conn.createStatement();
+        for(int i=0;i<3;i++){
+            stm.executeUpdate("insert into State(ID,Level,MaxValue) values ('"+getID()+"','"+(i+1)+"','"
+                    +1/*+"','"+point*/
+                    + "')");
+            System.out.println("Update point to History successful");
+        }
+    }
+
+    public void updatePoint(float result) throws SQLException {
+        var conn = MConnection.getInstance().getConnection();
+        Statement stm = conn.createStatement();
+        stm.executeUpdate("update History set Point = '"
+                + result +"'"
+                + "where CustomerID ='"
+                + ID + "'and Level ='" + level + "'and Lesson ='" + baiso + "';");
+        System.out.println("Update password successful");
+    }
+
     public void insertTotalData() throws SQLException {
         var conn = MConnection.getInstance().getConnection();
         Statement stm = conn.createStatement();

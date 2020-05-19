@@ -100,7 +100,7 @@ public class ControllerChallenge implements Initializable {
             hl[i].setOnAction(event -> {
                 try {
                     Main.students[Main.dem].setBaiso(finalI +1);
-                    System.out.println(Main.students[Main.dem].getBaiso());
+                    //System.out.println(Main.students[Main.dem].getBaiso());
                     openAudio(event,a,b);
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -128,14 +128,14 @@ public class ControllerChallenge implements Initializable {
         primaryStage.show();
     }
     public void getPath(ActionEvent event,String a,String b){
-        PlayVideo.path = "src\\sample\\video\\" + a + "\\";
-        PlayVideo.fileAnswer="src/sample/video/"+b+"/";
+        ControllerPlayVideo.path = "src\\sample\\video\\" + a + "\\";
+        ControllerPlayVideo.fileAnswer="src/sample/video/"+b+"/";
         Hyperlink hyperlink = (Hyperlink) event.getSource();
         for (int i =0;i<MAX;i++){
             if(hyperlink.equals(hl[i])){
-                PlayVideo.path += hl[i].getText();
+                ControllerPlayVideo.path += hl[i].getText();
                 lesson=i+1;
-                PlayVideo.fileAnswer+=hl[i].getText().substring(0,hl[i].getText().length()-3)+"txt";
+                ControllerPlayVideo.fileAnswer+=hl[i].getText().substring(0,hl[i].getText().length()-3)+"txt";
                 break;
             }
         }
@@ -143,15 +143,16 @@ public class ControllerChallenge implements Initializable {
 
     public boolean checkLession(int level){
         int temp[]=Main.students[Main.dem].getNow();
-        System.out.println(temp[level-1]);
-        if(lesson>temp[level-1]){
+        System.out.println("temp = " + temp[level-1]);
+        System.out.println("Lesson = " + lesson);
+        if(lesson>temp[level-1]+1){
             return false;
         }
         return true;
     }
     public void openAudio(ActionEvent event,String a,String b) throws IOException {
         getPath(event,a,b);
-        String temp=textChallenge.getText();
+        String temp= textChallenge.getText();
         if(temp.toLowerCase().equals("level 1")){
             level=1;
         }
