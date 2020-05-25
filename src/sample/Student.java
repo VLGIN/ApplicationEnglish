@@ -196,16 +196,14 @@ public class Student {
     public void insertData() throws SQLException {
         var conn = MConnection.getInstance().getConnection();
         Statement stm = conn.createStatement();
-        stm.executeUpdate("insert into Customer(UserName,PassWord,FullName,Email) " +
-                "values ('"+getUserName()+"','"+getPassword()+"','"+getFullName()+"','"
+        stm.executeUpdate("insert into Customer(UserName,PassWord,FullName,Email) values ('"+getUserName()+"','"+getPassword()+"','"+getFullName()+"','"
                 +getEmail()+ "')");
         System.out.println("Update sign up successful");
     }
     public void insertHistory(float point) throws SQLException {
         var conn = MConnection.getInstance().getConnection();
         Statement stm = conn.createStatement();
-        stm.executeUpdate("insert into History(CustomerID,Level,Lesson,Point) " +
-                "values ('"+getID()+"','"+getLevel()+"','"
+        stm.executeUpdate("insert into History(CustomerID,Level,Lesson,Point) values ('"+getID()+"','"+getLevel()+"','"
                 +getBaiso()+"','"+point
                 + "')");
         System.out.println("Update point to History successful");
@@ -351,31 +349,6 @@ public class Student {
             gender = resultSet.getString("Gender");
             edu = resultSet.getString("Edu");
         }
-    }
-    public float getPoint(int iD,int Level,int Baiso) throws SQLException {
-        var conn = MConnection.getInstance().getConnection();
-        var sql = "SELECT Point FROM dbo.History  where CustomerID ='"
-                + iD + "'and Level ='" + Level + "'and Lesson ='" + Baiso + "';";
-        var result = conn.prepareStatement(sql);
-        var resultSet = result.executeQuery();
-        float a = (float) 0.0;
-        while (resultSet.next()) {
-            a = resultSet.getFloat("Point");
-        }
-        return a;
-    }
-    /*public float[] point(int level,int now) throws SQLException {
-        float [] point = new float[10];
-        for (int i=0;i<now;i++){
-            point[i] = getPoint(ID,level,i);
-        }
-        return point;
-    }*/
-    public void updatePoint(int level,int now) throws SQLException {
-        for(int i= 0;i<now;i++){
-            histories[level-1][i] = new History(i+1,getPoint(ID,level,i));
-        }
-        System.out.println("Successfully");
     }
 }
 
