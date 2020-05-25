@@ -350,5 +350,23 @@ public class Student {
             edu = resultSet.getString("Edu");
         }
     }
+    public float getPoint(int iD,int Level,int Baiso) throws SQLException {
+        var conn = MConnection.getInstance().getConnection();
+        var sql = "SELECT Point FROM dbo.History  where CustomerID ='"
+                + iD + "'and Level ='" + Level + "'and Lesson ='" + Baiso + "';";
+        var result = conn.prepareStatement(sql);
+        var resultSet = result.executeQuery();
+        float a = (float) 0.0;
+        while (resultSet.next()) {
+            a = resultSet.getFloat("Point");
+        }
+        return a;
+    }
+    public void updatePoint(int level,int now) throws SQLException {
+        for(int i= 0;i<now;i++){
+            histories[level-1][i] = new History(i+1,getPoint(ID,level,i));
+        }
+        System.out.println("Successfully");
+    }
 }
 

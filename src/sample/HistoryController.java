@@ -57,7 +57,7 @@ public class HistoryController implements Initializable {
         }*/
     }
 
-    public void setLevel1(){
+    public void setLevel1() throws SQLException {
         XYChart.Series<String, Number> series = getSeries(test, 1);
         lineChart.getData().clear();
         lineChart.getData().add(series);
@@ -73,7 +73,7 @@ public class HistoryController implements Initializable {
         table.setItems(data);
     }
 
-    public void setLevel2(){
+    public void setLevel2() throws SQLException {
         XYChart.Series<String, Number> series = getSeries(test, 2);
         lineChart.getData().clear();
         lineChart.getData().add(series);
@@ -89,7 +89,7 @@ public class HistoryController implements Initializable {
         table.setItems(data);
     }
 
-    public void setLevel3(){
+    public void setLevel3() throws SQLException {
         XYChart.Series<String, Number> series = getSeries(test, 3);
         lineChart.getData().clear();
         lineChart.getData().add(series);
@@ -106,15 +106,17 @@ public class HistoryController implements Initializable {
     }
 
 
-    public XYChart.Series<String, Number> getSeries(Student test, int level){
+    public XYChart.Series<String, Number> getSeries(Student test, int level) throws SQLException {
+        test.setNow();
+        test.updatePoint(level,test.getNow()[level-1]+1);
         XYChart.Series<String, Number> series = new XYChart.Series<>();
-        for(int i = 0; i<test.getNow()[level-1]; i++){
-            series.getData().add(new XYChart.Data<>("Vong "+test.getHistories()[level-1][i].getVong(), test.getHistories()[level-1][i].getDiem()));
+        for(int i = 0; i<test.getNow()[level-1]+1; i++){
+            series.getData().add(new XYChart.Data<>("Vong "+test.getHistories()[level-1][i].getVong(),
+                    test.getHistories()[level-1][i].getDiem()));
         }
         series.setName("Diem tung vong");
         return series;
     }
-
     public void logout(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
         Stage primaryStage = (Stage)((Node) event.getSource()).getScene().getWindow();
