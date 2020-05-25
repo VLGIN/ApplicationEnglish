@@ -71,6 +71,7 @@ public class HistoryController implements Initializable {
         roundColumn.setCellValueFactory(new PropertyValueFactory<History, Integer>("vong"));
         scoreColumn.setCellValueFactory(new PropertyValueFactory<History, Integer>("diem"));
         table.setItems(data);
+        
     }
 
     public void setLevel2() throws SQLException {
@@ -108,9 +109,9 @@ public class HistoryController implements Initializable {
 
     public XYChart.Series<String, Number> getSeries(Student test, int level) throws SQLException {
         test.setNow();
-        test.updatePoint(level,test.getNow()[level-1]+1);
+        test.updatePoint(level,test.getNow()[level-1]);
         XYChart.Series<String, Number> series = new XYChart.Series<>();
-        for(int i = 0; i<test.getNow()[level-1]+1; i++){
+        for(int i = 0; i<test.getNow()[level-1]; i++){
             series.getData().add(new XYChart.Data<>("Vong "+test.getHistories()[level-1][i].getVong(),
                     test.getHistories()[level-1][i].getDiem()));
         }
