@@ -4,6 +4,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -17,10 +18,12 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
-public class ControllerLogin {
+public class ControllerLogin implements Initializable {
     @FXML
     private TextField signEmail,signName,signID;
     @FXML
@@ -33,6 +36,16 @@ public class ControllerLogin {
     @FXML
     private StackPane stackPane;
     private boolean verifyLogin,success = false;
+
+    public static Student student;
+
+    public static Student getStudent() {
+        return student;
+    }
+
+    public static void setStudent() {
+        ControllerLogin.student = new Student();
+    }
 
     public boolean isVerifyLogin() {
         return verifyLogin;
@@ -70,16 +83,16 @@ public class ControllerLogin {
             baoLoi.setText("Password does not match.");
             return false;
         }
-        else if(Main.students[Main.dem].haveUserName(signID.getText())){
+        else if(student.haveUserName(signID.getText())){
             baoLoi.setFill(Color.RED);
             baoLoi.setText("Username " + signID.getText() + " is not available.");
             return false;
         }
         else {
             // insert data
-            Main.students[Main.dem].setSignUp(signID.getText(),signPass.getText(),
+            student.setSignUp(signID.getText(),signPass.getText(),
                     signName.getText(),signEmail.getText());
-            Main.students[Main.dem].insertData();
+            student.insertData();
             return true;
         }
     }
@@ -90,7 +103,7 @@ public class ControllerLogin {
         }
     }
     public void checkLogin() throws SQLException {
-       String pass = Main.students[Main.dem].checkLogin(loginID.getText());
+       String pass = student.checkLogin(loginID.getText());
        System.out.println(pass);
         if(loginPass.getText().equals(pass)){
             verifyLogin = true;
@@ -107,14 +120,14 @@ public class ControllerLogin {
             }
             if(verifyLogin == true){
                // Main.student.setUserName(loginID.getText());
-                Main.students[Main.dem].setData(loginID.getText());
-                Main.students[Main.dem].insertState();
+                student.setData(loginID.getText());
+                student.insertState();
                 /*try{
                     Main.students[Main.dem].setPoint();
                 } catch (SQLException e){
                     e.printStackTrace();
                 }*/
-                System.out.println(Main.students[Main.dem].getFullName());
+                System.out.println(student.getFullName());
                 setSceneHome(event);
             }
         }
@@ -135,5 +148,10 @@ public class ControllerLogin {
     public void Error(){
         this.target.setFill(Color.RED);
         this.target.setText("User account or password is incorrect.");
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        student = new Student();
     }
 }

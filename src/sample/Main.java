@@ -10,14 +10,14 @@ import javafx.stage.Stage;
 import java.io.InputStream;
 
 public class Main extends Application {
-    public final static int MAX = 10;
+   // public final static int MAX = 10;
     Stage primaryStage;
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("loginDemo.fxml"));
         primaryStage.setTitle("Hust English App");
-        Scene scene = new Scene(root, 400, 600);
-        scene.getStylesheets().add(Main.class.getResource("application.css").toExternalForm());
+        Scene scene = new Scene(root, 700, 500);
+        //scene.getStylesheets().add(Main.class.getResource("application.css").toExternalForm());
 
         Image image = new Image(getClass().getResourceAsStream("book.png"));
         primaryStage.getIcons().add(image);
@@ -25,13 +25,13 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-    public static Student[] students = new Student[10];
+    /*public static Student[] students = new Student[10];
     public static int dem = 0;
     static {
         for(int i=0;i<MAX;i++){
             students[i] = new Student();
         }
-    }
+    }*/
     public static void main(String[] args) {
         launch(args);
     }

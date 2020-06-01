@@ -19,6 +19,9 @@ import java.util.ResourceBundle;
 public class ControllerHome implements Initializable {
     @FXML
     private Text name;
+
+    public Student student;
+
     public void setSceneChallenge(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("challenge.fxml"));
         Stage window = (Stage)((Node) event.getSource()).getScene().getWindow();
@@ -48,11 +51,11 @@ public class ControllerHome implements Initializable {
     }
 
     public void setSceneLogin(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("loginDemo.fxml"));
         Stage primaryStage = (Stage)((Node) event.getSource()).getScene().getWindow();
         primaryStage.setTitle("Hust English App");
-        Scene scene = new Scene(root, 400, 600);
-        scene.getStylesheets().add(Main.class.getResource("application.css").toExternalForm());
+        Scene scene = new Scene(root, 700, 500);
+      //  scene.getStylesheets().add(Main.class.getResource("application.css").toExternalForm());
 
         Image image = new Image(getClass().getResourceAsStream("book.png"));
         primaryStage.getIcons().add(image);
@@ -63,8 +66,7 @@ public class ControllerHome implements Initializable {
 
     public void logout(ActionEvent event) throws IOException {
         setSceneLogin(event);
-        Main.students[Main.dem] = null;
-        Main.dem++;
+        student = null;
     }
 
     public void setSceneHome(ActionEvent event) throws IOException {
@@ -79,6 +81,7 @@ public class ControllerHome implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        name.setText(Main.students[Main.dem].getFullName());
+        student = ControllerLogin.student;
+        name.setText(student.getFullName());
     }
 }

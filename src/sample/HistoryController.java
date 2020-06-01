@@ -45,11 +45,12 @@ public class HistoryController implements Initializable {
     @FXML
     private TableColumn<History, Integer> scoreColumn;
 
-    private Student test = Main.students[Main.dem];
+    private Student test ;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        name.setText(Main.students[Main.dem].getFullName());
+        test = ControllerLogin.student;
+        name.setText(test.getFullName());
         /*try {
             test.setPoint();
         } catch (SQLException e) {

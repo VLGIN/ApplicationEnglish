@@ -41,6 +41,8 @@ public class ControllerChallenge implements Initializable {
     static int level;
     public final static int MAX = 10;
 
+    public Student student;
+
     private Hyperlink[] hl = new Hyperlink[MAX];
 
     public void setHyperLink(){
@@ -73,24 +75,25 @@ public class ControllerChallenge implements Initializable {
     public void setTextChallenge1(ActionEvent event) throws IOException {
         this.textChallenge.setText("Level 1");
         temp("src\\sample\\video\\Path\\lv1.txt");
-        Main.students[Main.dem].setLevel("1");
+        student.setLevel("1");
         setAction("Level 1","DataLevel1");
     }
     public void setTextChallenge2(ActionEvent event) throws IOException {
         this.textChallenge.setText("Level 2");
         temp("src\\sample\\video\\Path\\lv2.txt");
-        Main.students[Main.dem].setLevel("2");
+        student.setLevel("2");
         setAction("Level 2","DataLevel2");
     }
     public void setTextChallenge3(ActionEvent event) throws IOException {
         this.textChallenge.setText("Level 3");
         temp("src\\sample\\video\\Path\\lv3.txt");
-        Main.students[Main.dem].setLevel("3");
+        student.setLevel("3");
         setAction("Level 3","DataLevel3");
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        name.setText(Main.students[Main.dem].getFullName());
+        student = ControllerLogin.student;
+        name.setText(student.getFullName());
         setHyperLink();
     }
 
@@ -99,7 +102,7 @@ public class ControllerChallenge implements Initializable {
             int finalI = i;
             hl[i].setOnAction(event -> {
                 try {
-                    Main.students[Main.dem].setBaiso(finalI +1);
+                    student.setBaiso(finalI +1);
                     //System.out.println(Main.students[Main.dem].getBaiso());
                     openAudio(event,a,b);
                 } catch (IOException e) {
@@ -111,15 +114,14 @@ public class ControllerChallenge implements Initializable {
 
     public void logout(ActionEvent event) throws IOException {
         setSceneLogin(event);
-        Main.students[Main.dem] = null;
-        Main.dem++;
+        student = null;
     }
     public void setSceneLogin(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("loginDemo.fxml"));
         Stage primaryStage = (Stage)((Node) event.getSource()).getScene().getWindow();
         primaryStage.setTitle("Hust English App");
-        Scene scene = new Scene(root, 400, 600);
-        scene.getStylesheets().add(Main.class.getResource("application.css").toExternalForm());
+        Scene scene = new Scene(root, 700, 500);
+       // scene.getStylesheets().add(Main.class.getResource("application.css").toExternalForm());
 
         Image image = new Image(getClass().getResourceAsStream("book.png"));
         primaryStage.getIcons().add(image);
@@ -142,7 +144,7 @@ public class ControllerChallenge implements Initializable {
     }
 
     public boolean checkLession(int level){
-        int temp[]=Main.students[Main.dem].getNow();
+        int temp[]= student.getNow();
         System.out.println("temp = " + temp[level-1]);
         System.out.println("Lesson = " + lesson);
         if(lesson>temp[level-1]+1){

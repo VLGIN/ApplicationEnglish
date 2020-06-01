@@ -71,6 +71,8 @@ public class ControllerPlayVideo implements Initializable {
 
     public static String path;
 
+    public Student student;
+
 
     public static String fileAnswer;
     Exercise lesson=new Exercise(fileAnswer);
@@ -138,6 +140,7 @@ public class ControllerPlayVideo implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        student = ControllerLogin.student;
 
         System.out.println(Arrays.toString(arr));
         if(line<4){
@@ -312,18 +315,18 @@ public class ControllerPlayVideo implements Initializable {
     public void updateLessonComplete() throws SQLException {
         int level=ControllerChallenge.level;
         int lesson=ControllerChallenge.lesson;
-        if(Main.students[Main.dem].getNow()[level-1]<level){
-            Main.students[Main.dem].getNow()[level-1]= lesson;
+        if(student.getNow()[level-1]<level){
+            student.getNow()[level-1]= lesson;
         }
 
 
         //Create function insert into database saved lesson is completed
-        float oldPoint = Main.students[Main.dem].getPoint();
+        float oldPoint = student.getPoint();
         if(oldPoint == 0 ){
-            Main.students[Main.dem].insertHistory(result);
+            student.insertHistory(result);
         }
         else if (result > oldPoint){
-            Main.students[Main.dem].updatePoint(result);
+            student.updatePoint(result);
         }
 
 
@@ -331,7 +334,7 @@ public class ControllerPlayVideo implements Initializable {
 
 
         //insert result into database
-        Main.students[Main.dem].editHistory(result);
+        student.editHistory(result);
        /* Main.students[Main.dem].insertHistory(result);*/
     }
 

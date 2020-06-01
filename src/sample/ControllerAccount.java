@@ -31,6 +31,9 @@ public class ControllerAccount implements Initializable {
     DatePicker dob;
     @FXML
     RadioButton btMale,btFemale;
+
+    public Student student;
+
     public void ChangePassword(ActionEvent event) throws IOException{
         Parent root  = FXMLLoader.load(getClass().getResource("ChangesPassWord.fxml"));
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -53,14 +56,14 @@ public class ControllerAccount implements Initializable {
     }
     public void selectGender1(ActionEvent event){
         btFemale.setVisible(false);
-        Main.students[Main.dem].setGender("Male");
+        student.setGender("Male");
     }
     public void selectGender2(ActionEvent event){
         btMale.setVisible(false);
-        Main.students[Main.dem].setGender("Female");
+        student.setGender("Female");
     }
     public void update(ActionEvent event) throws SQLException {
-        Student a = Main.students[Main.dem];
+        Student a = student;
         a.setFullName(name.getText());
         a.setAddress(address.getText());
         a.setPhone(phone.getText());
@@ -83,7 +86,8 @@ public class ControllerAccount implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Student a = Main.students[Main.dem];
+        student = ControllerLogin.student;
+        Student a = student;
         name.setText(a.getFullName());
         address.setText(a.getAddress());
         phone.setText(a.getPhone());

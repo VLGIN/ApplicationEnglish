@@ -28,6 +28,8 @@ public class ControllerChangePass implements Initializable {
     @FXML
     private Text baoLoi;
 
+    public Student student;
+
     public boolean check(Student a){
         if(!(changePass.getText()).equals(a.getPassword())){
             baoLoi.setFill(Color.RED);
@@ -44,7 +46,7 @@ public class ControllerChangePass implements Initializable {
         }
     }
     public void setChangePass(ActionEvent event) throws SQLException, IOException {
-        Student a = Main.students[Main.dem];
+        Student a = student;
         if(check(a)){
             a.updatePass(newPass.getText());
             Alert hi = new Alert(Alert.AlertType.INFORMATION);
@@ -56,11 +58,11 @@ public class ControllerChangePass implements Initializable {
         }
     }
     public void setSceneLogin(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("loginDemo.fxml"));
         Stage primaryStage = (Stage)((Node) event.getSource()).getScene().getWindow();
         primaryStage.setTitle("Hust English App");
-        Scene scene = new Scene(root, 400, 600);
-        scene.getStylesheets().add(Main.class.getResource("application.css").toExternalForm());
+        Scene scene = new Scene(root, 700, 500);
+       // scene.getStylesheets().add(Main.class.getResource("application.css").toExternalForm());
 
         Image image = new Image(getClass().getResourceAsStream("book.png"));
         primaryStage.getIcons().add(image);
@@ -71,8 +73,7 @@ public class ControllerChangePass implements Initializable {
 
     public void logout(ActionEvent event) throws IOException {
         setSceneLogin(event);
-        Main.students[Main.dem] = null;
-        Main.dem++;
+        student = null;
     }
 
     public void BackAccounts(ActionEvent event) throws IOException{
@@ -90,6 +91,7 @@ public class ControllerChangePass implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        changeName.setText(Main.students[Main.dem].getUserName());
+        student = ControllerLogin.student;
+        changeName.setText(student.getUserName());
     }
 }
