@@ -364,7 +364,7 @@ public class Student {
     }
     public void updatePoint(int level,int now) throws SQLException {
         for(int i= 0;i<now;i++){
-            histories[level-1][i] = new History(i+1,getPoint(ID,level,i));
+            histories[level-1][i] = new History(i+1,getPoint(ID,level,i+1));
         }
         System.out.println("Successfully");
     }

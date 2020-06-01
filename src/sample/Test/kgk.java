@@ -27,10 +27,12 @@ public class kgk {
 //        System.out.println(k);
 //        System.out.println(Arrays.stream(a.split(" ")).
 //                filter(values->values!=null&&values.length()>0).toArray(size->new String[size]).length);
-        Exercise newE=new Exercise("src/sample/Test/data.txt");
-        String a=newE.getData();
-        System.out.println(Arrays.toString(newE.getGuide()));
-        System.out.println(Arrays.toString(newE.getIndexFirstForEachLine()));
-        System.out.println(a);
+//        Exercise newE=new Exercise("src/sample/Test/data.txt");
+//        String a=newE.getData();
+//        System.out.println(Arrays.toString(newE.getGuide()));
+//        System.out.println(Arrays.toString(newE.getIndexFirstForEachLine()));
+//        System.out.println(a);
+        char a='i';
+        System.out.println(Character.toUpperCase(a));
     }
 }
