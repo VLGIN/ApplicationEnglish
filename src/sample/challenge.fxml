@@ -30,9 +30,9 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <ImageView fitHeight="178.0" fitWidth="119.0" layoutX="47.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="178.0" fitWidth="119.0" layoutX="44.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Image/bk.png" />
+                  <Image url="@photo/book1.png" />
                </image>
             </ImageView>
             <HBox layoutX="810.0" layoutY="48.0" prefHeight="30.0" prefWidth="265.0">

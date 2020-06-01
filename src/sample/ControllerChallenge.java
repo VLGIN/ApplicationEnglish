@@ -41,7 +41,7 @@ public class ControllerChallenge implements Initializable {
     static int level;
     public final static int MAX = 10;
 
-    public Student student;
+    private Student student;
 
     private Hyperlink[] hl = new Hyperlink[MAX];
 

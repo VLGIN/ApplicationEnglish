@@ -20,7 +20,7 @@ public class ControllerHome implements Initializable {
     @FXML
     private Text name;
 
-    public Student student;
+    private Student student;
 
     public void setSceneChallenge(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("challenge.fxml"));
