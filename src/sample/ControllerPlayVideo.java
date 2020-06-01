@@ -84,7 +84,7 @@ public class ControllerPlayVideo implements Initializable {
     private String[] guide=lesson.getGuide();
     private int line=lesson.getLine();
     private int sizeForOneLine[]=lesson.getIndexFirstForEachLine();
-
+    int level=ControllerChallenge.level;
     private int temp=0;
     private static int i = 0;
     String video=new File(path).getAbsolutePath();
@@ -124,6 +124,7 @@ public class ControllerPlayVideo implements Initializable {
     }
 
     public void undo(ActionEvent event) throws IOException {
+        i=0;
         setSceneChallenge(event);
         mediaPlayer.pause();
         myTimer.cancel();
@@ -267,30 +268,51 @@ public class ControllerPlayVideo implements Initializable {
     }
 
     private int temporary=0;
-    // check answer
+    int checkIndexFirst=0;
     public void checkAnswer() throws IOException, SQLException {
         if(temporary==0 &&i==0){
             System.out.println(arr[i]);
             temporary++;
         }
         try {
-            if (check.getText().charAt(check.getText().length() - 1) != arr[i].charAt(check.getText().length() - 1)) {
-                check.deletePreviousChar();
-            }
-            if(check.getText().length() == arr[i].length()) {
-                guideAnswer.setText(guideAnswer.getText()+" "+data2[i]);
-                check.clear();
-                i++;
-                System.out.println(arr[i]);
-                if(i==sizeForOneLine[temp]&&temp%2!=0){
-                    guideAnswer.setText(guideAnswer.getText()+"\nA: ");
-                    temp++;
+            int convertToAscii=(int)(arr[i].charAt(0));
+            if(convertToAscii>=65&&convertToAscii<=90&&level==1&&checkIndexFirst==0){
+                if((int)(check.getText().charAt(0))-32==convertToAscii){
+                    int caretPos=check.getCaretPosition();
+                    char cc=check.getText().charAt(0);
+                    check.setText(String.valueOf(Character.toUpperCase(cc)));
+                    check.positionCaret(caretPos);
+                    checkIndexFirst++;
                 }
-                else if(i==sizeForOneLine[temp]&&temp%2==0){
-                    guideAnswer.setText(guideAnswer.getText()+"\nB: ");
-                    temp++;
+                if(arr[i].length()==1){
+                    guideAnswer.setText(guideAnswer.getText()+arr[i]);
+                    i++;
+                    System.out.println(arr[i]);
+                    check.clear();
                 }
             }
+            else {
+                if (check.getText().charAt(check.getText().length() - 1) != arr[i].charAt(check.getText().length() - 1)) {
+                    check.deletePreviousChar();
+                }
+                if (check.getText().length() == arr[i].length()) {
+                    guideAnswer.setText(guideAnswer.getText() + " " + data2[i]);
+                    check.clear();
+                    i++;
+                    checkIndexFirst=0;
+                    System.out.println(arr[i]);
+                }
+            }
+
+            if (i == sizeForOneLine[temp] && temp % 2 != 0) {
+                guideAnswer.setText(guideAnswer.getText() + "\nA: ");
+                temp++;
+            } else if (i == sizeForOneLine[temp] && temp % 2 == 0) {
+                guideAnswer.setText(guideAnswer.getText() + "\nB: ");
+                temp++;
+            }
+
+
         } catch(Exception e){}
 
         if(i >= arr.length){
@@ -313,7 +335,7 @@ public class ControllerPlayVideo implements Initializable {
 
 
     public void updateLessonComplete() throws SQLException {
-        int level=ControllerChallenge.level;
+
         int lesson=ControllerChallenge.lesson;
         if(student.getNow()[level-1]<level){
             student.getNow()[level-1]= lesson;
@@ -340,7 +362,7 @@ public class ControllerPlayVideo implements Initializable {
 
     public void showResult() throws IOException, SQLException {
 
-        if(result>=7.5){
+        if(result>=5){
             Alert alert=new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("App");
 
