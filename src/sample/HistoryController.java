@@ -55,12 +55,16 @@ public class HistoryController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }*/
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
+        lineChart.getData().add(series);
     }
 
     public void setLevel1() throws SQLException {
         XYChart.Series<String, Number> series = getSeries(test, 1);
         lineChart.getData().clear();
+        lineChart.setAnimated(true);
         lineChart.getData().add(series);
+        lineChart.setAnimated(false);
 
 
         ObservableList<History> data = FXCollections.observableArrayList();
@@ -71,12 +75,15 @@ public class HistoryController implements Initializable {
         roundColumn.setCellValueFactory(new PropertyValueFactory<History, Integer>("vong"));
         scoreColumn.setCellValueFactory(new PropertyValueFactory<History, Integer>("diem"));
         table.setItems(data);
+        
     }
 
     public void setLevel2() throws SQLException {
         XYChart.Series<String, Number> series = getSeries(test, 2);
         lineChart.getData().clear();
+        lineChart.setAnimated(true);
         lineChart.getData().add(series);
+        lineChart.setAnimated(false);
 
 
         ObservableList<History> data = FXCollections.observableArrayList();
@@ -92,7 +99,9 @@ public class HistoryController implements Initializable {
     public void setLevel3() throws SQLException {
         XYChart.Series<String, Number> series = getSeries(test, 3);
         lineChart.getData().clear();
+        lineChart.setAnimated(true);
         lineChart.getData().add(series);
+        lineChart.setAnimated(false);
 
 
         ObservableList<History> data = FXCollections.observableArrayList();
@@ -111,7 +120,7 @@ public class HistoryController implements Initializable {
         test.updatePoint(level,test.getNow()[level-1]);
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         for(int i = 0; i<test.getNow()[level-1]; i++){
-            series.getData().add(new XYChart.Data<>("Vong "+test.getHistories()[level-1][i].getVong(),
+            series.getData().add(new XYChart.Data("Vong "+String.valueOf(test.getHistories()[level-1][i].getVong()),
                     test.getHistories()[level-1][i].getDiem()));
         }
         series.setName("Diem tung vong");
