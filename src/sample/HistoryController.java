@@ -46,6 +46,7 @@ public class HistoryController implements Initializable {
     private TableColumn<History, Integer> scoreColumn;
 
     private Student test ;
+    ActionDataBase action = new ActionDataBase();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -117,8 +118,10 @@ public class HistoryController implements Initializable {
 
 
     public XYChart.Series<String, Number> getSeries(Student test, int level) throws SQLException {
-        test.setNow();
-        test.updatePoint(level,test.getNow()[level-1]);
+        //test.setNow();
+        action.setNow(test);
+        action.updatePoint(level,test.getNow()[level-1],test);
+        //test.updatePoint(level,test.getNow()[level-1]);
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         for(int i = 0; i<test.getNow()[level-1]; i++){
             series.getData().add(new XYChart.Data("Vong "+String.valueOf(test.getHistories()[level-1][i].getVong()),

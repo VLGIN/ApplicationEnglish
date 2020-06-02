@@ -72,7 +72,7 @@ public class ControllerPlayVideo implements Initializable {
     public static String path;
 
     public Student student;
-
+    ActionDataBase action = new ActionDataBase();
 
     public static String fileAnswer;
     Exercise lesson=new Exercise(fileAnswer);
@@ -343,12 +343,14 @@ public class ControllerPlayVideo implements Initializable {
 
 
         //Create function insert into database saved lesson is completed
-        float oldPoint = student.getPoint();
+        float oldPoint = action.getPoint(student);
         if(oldPoint == 0 ){
-            student.insertHistory(result);
+            action.insertHistory(result,student);
+            //student.insertHistory(result);
         }
         else if (result > oldPoint){
-            student.updatePoint(result);
+            action.updatePoint(result,student);
+           // student.updatePoint(result);
         }
 
 
@@ -356,7 +358,8 @@ public class ControllerPlayVideo implements Initializable {
 
 
         //insert result into database
-        student.editHistory(result);
+        action.editHistory(result,student);
+        //student.editHistory(result);
        /* Main.students[Main.dem].insertHistory(result);*/
     }
 

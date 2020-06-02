@@ -33,6 +33,7 @@ public class ControllerAccount implements Initializable {
     RadioButton btMale,btFemale;
 
     public Student student;
+    public ActionDataBase action = new ActionDataBase();
 
     public void ChangePassword(ActionEvent event) throws IOException{
         Parent root  = FXMLLoader.load(getClass().getResource("ChangesPassWord.fxml"));
@@ -74,7 +75,7 @@ public class ControllerAccount implements Initializable {
         a.setAge(Integer.valueOf(age.getText()));
         a.setEmail(email.getText());
         a.setEdu(edu.getText());
-        a.insertTotalData();
+        action.insertTotalData(a);
         Alert hi = new Alert(Alert.AlertType.INFORMATION);
         hi.setTitle("Update data");
         hi.setHeaderText(null);

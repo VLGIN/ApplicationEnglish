@@ -38,6 +38,7 @@ public class ControllerLogin implements Initializable {
     private boolean verifyLogin,success = false;
 
     public static Student student;
+    public ActionDataBase action = new ActionDataBase();
 
     public static Student getStudent() {
         return student;
@@ -83,16 +84,16 @@ public class ControllerLogin implements Initializable {
             baoLoi.setText("Password does not match.");
             return false;
         }
-        else if(student.haveUserName(signID.getText())){
+        else if(action.haveUserName(signID.getText())){
             baoLoi.setFill(Color.RED);
             baoLoi.setText("Username " + signID.getText() + " is not available.");
             return false;
         }
         else {
             // insert data
-            student.setSignUp(signID.getText(),signPass.getText(),
+            action.setSignUp(student,signID.getText(),signPass.getText(),
                     signName.getText(),signEmail.getText());
-            student.insertData();
+            action.insertData(student);
             return true;
         }
     }
@@ -103,7 +104,8 @@ public class ControllerLogin implements Initializable {
         }
     }
     public void checkLogin() throws SQLException {
-       String pass = student.checkLogin(loginID.getText());
+
+       String pass = action.checkLogin(loginID.getText());
        System.out.println(pass);
         if(loginPass.getText().equals(pass)){
             verifyLogin = true;
@@ -120,8 +122,9 @@ public class ControllerLogin implements Initializable {
             }
             if(verifyLogin == true){
                // Main.student.setUserName(loginID.getText());
-                student.setData(loginID.getText());
-                student.insertState();
+                action.setData(loginID.getText(),student);
+                action.insertState(student);
+                //student.insertState();
                 /*try{
                     Main.students[Main.dem].setPoint();
                 } catch (SQLException e){

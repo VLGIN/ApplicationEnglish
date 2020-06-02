@@ -29,7 +29,7 @@ public class ControllerChangePass implements Initializable {
     private Text baoLoi;
 
     public Student student;
-
+    ActionDataBase action = new ActionDataBase();
     public boolean check(Student a){
         if(!(changePass.getText()).equals(a.getPassword())){
             baoLoi.setFill(Color.RED);
@@ -48,7 +48,7 @@ public class ControllerChangePass implements Initializable {
     public void setChangePass(ActionEvent event) throws SQLException, IOException {
         Student a = student;
         if(check(a)){
-            a.updatePass(newPass.getText());
+            action.updatePass(newPass.getText(),a);
             Alert hi = new Alert(Alert.AlertType.INFORMATION);
             hi.setTitle("Update password");
             hi.setHeaderText("Log out");

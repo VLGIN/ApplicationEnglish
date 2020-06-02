@@ -12,6 +12,7 @@ import java.io.InputStream;
 public class Main extends Application {
    // public final static int MAX = 10;
     Stage primaryStage;
+    public ActionDataBase action = new ActionDataBase();
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("loginDemo.fxml"));
