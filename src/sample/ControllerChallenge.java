@@ -41,7 +41,7 @@ public class ControllerChallenge implements Initializable {
     static int level;
     public final static int MAX = 10;
 
-    public Student student;
+    private Student student;
 
     private Hyperlink[] hl = new Hyperlink[MAX];
 
@@ -72,29 +72,43 @@ public class ControllerChallenge implements Initializable {
         }
         is.close();
     }
+
+    public void setOnButton(String a) throws IOException {
+        this.textChallenge.setText("Level " + a);
+        temp("src\\sample\\video\\Path\\lv" + a + ".txt");
+        student.setLevel(a);
+        setAction("Level " + a,"DataLevel" + a);
+    }
+
     public void setTextChallenge1(ActionEvent event) throws IOException {
-        this.textChallenge.setText("Level 1");
-        temp("src\\sample\\video\\Path\\lv1.txt");
-        student.setLevel("1");
-        setAction("Level 1","DataLevel1");
+        setOnButton("1");
     }
     public void setTextChallenge2(ActionEvent event) throws IOException {
-        this.textChallenge.setText("Level 2");
-        temp("src\\sample\\video\\Path\\lv2.txt");
-        student.setLevel("2");
-        setAction("Level 2","DataLevel2");
+        setOnButton("2");
     }
     public void setTextChallenge3(ActionEvent event) throws IOException {
-        this.textChallenge.setText("Level 3");
-        temp("src\\sample\\video\\Path\\lv3.txt");
-        student.setLevel("3");
-        setAction("Level 3","DataLevel3");
+        setOnButton("3");
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         student = ControllerLogin.student;
         name.setText(student.getFullName());
         setHyperLink();
+        try{
+            String a = student.getLevel();
+            if(a!=null){
+                switch (a){
+                    case "1" : setOnButton("1");break;
+                    case "2" : setOnButton("2");break;
+                    case "3" : setOnButton("3");break;
+                    default:
+                        System.out.println("Choose level");
+
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void setAction(String a,String b){

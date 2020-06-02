@@ -32,8 +32,12 @@ public class ControllerAccount implements Initializable {
     @FXML
     RadioButton btMale,btFemale;
 
+
     public Student student;
     public ActionDataBase action = new ActionDataBase();
+
+    //private Student student;
+
 
     public void ChangePassword(ActionEvent event) throws IOException{
         Parent root  = FXMLLoader.load(getClass().getResource("ChangesPassWord.fxml"));

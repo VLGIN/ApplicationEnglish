@@ -22,14 +22,19 @@ import java.util.ResourceBundle;
 
 public class ControllerChangePass implements Initializable {
     @FXML
-    private TextField changeName;
+    private Text changeName;
     @FXML
     private PasswordField changePass,newPass,confirmPass;
     @FXML
     private Text baoLoi;
 
+
     public Student student;
     ActionDataBase action = new ActionDataBase();
+
+    //private Student student;
+
+
     public boolean check(Student a){
         if(!(changePass.getText()).equals(a.getPassword())){
             baoLoi.setFill(Color.RED);

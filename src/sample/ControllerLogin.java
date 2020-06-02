@@ -79,7 +79,13 @@ public class ControllerLogin implements Initializable {
         }
     }
     public boolean signUp() throws SQLException {
-        if(!signPass.getText().equals(signCPass.getText())){
+        if(signID.getText().equals("")||signPass.getText().equals("")
+                ||signCPass.getText().equals("")){
+            baoLoi.setFill(Color.RED);
+            baoLoi.setText("Enter your account and password");
+            return false;
+        }
+        else if(!signPass.getText().equals(signCPass.getText())){
             baoLoi.setFill(Color.RED);
             baoLoi.setText("Password does not match.");
             return false;
