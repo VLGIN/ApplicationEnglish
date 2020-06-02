@@ -275,33 +275,54 @@ public class ControllerPlayVideo implements Initializable {
             temporary++;
         }
         try {
-            int convertToAscii=(int)(arr[i].charAt(0));
-            if(convertToAscii>=65&&convertToAscii<=90&&level==1&&checkIndexFirst==0){
-                if((int)(check.getText().charAt(0))-32==convertToAscii){
+            int a=(int)(arr[i].charAt(0));
+            if(check.getText().length()==1&&a>=65&&a<=90&&level==1){
+                char headChar=check.getText().charAt(0);
+                if((int)headChar-32==a){
                     int caretPos=check.getCaretPosition();
-                    char cc=check.getText().charAt(0);
-                    check.setText(String.valueOf(Character.toUpperCase(cc)));
+                    check.setText(Character.toString(arr[i].charAt(0)));
                     check.positionCaret(caretPos);
-                    checkIndexFirst++;
+                    if(arr[i].length()==1){
+                        check.clear();
+                        if(i==sizeForOneLine[temp])
+                            guideAnswer.setText(guideAnswer.getText()+data2[i]);
+                        else{
+                            guideAnswer.setText(guideAnswer.getText()+" "+data2[i]);
+                        }
+                        i++;
+                        System.out.println(arr[i]);
+                    }
+                    if(check.getText().length()==arr[i].length()) {
+                        i++;
+                        System.out.println(arr[i]);
+                    }
                 }
-                if(arr[i].length()==1){
-                    guideAnswer.setText(guideAnswer.getText()+arr[i]);
-                    i++;
-                    System.out.println(arr[i]);
-                    check.clear();
+                else if((int)headChar==a){
+                    if(arr[i].length()==1){
+                        check.clear();
+                        guideAnswer.setText(guideAnswer.getText()+data2[i]);
+                        i++;
+                        System.out.println(arr[i]);
+                    }
                 }
-            }
-            else {
-                if (check.getText().charAt(check.getText().length() - 1) != arr[i].charAt(check.getText().length() - 1)) {
+                else{
                     check.deletePreviousChar();
+                    return;
                 }
-                if (check.getText().length() == arr[i].length()) {
-                    guideAnswer.setText(guideAnswer.getText() + " " + data2[i]);
-                    check.clear();
-                    i++;
-                    checkIndexFirst=0;
-                    System.out.println(arr[i]);
-                }
+
+                return;
+            }
+
+
+            if (check.getText().charAt(check.getText().length() - 1) != arr[i].charAt(check.getText().length() - 1)) {
+                check.deletePreviousChar();
+            }
+            if (check.getText().length() == arr[i].length()) {
+                guideAnswer.setText(guideAnswer.getText() + " " + data2[i]);
+                check.clear();
+                i++;
+                checkIndexFirst = 0;
+                System.out.println(arr[i]);
             }
 
             if (i == sizeForOneLine[temp] && temp % 2 != 0) {
