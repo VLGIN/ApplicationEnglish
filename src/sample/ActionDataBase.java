@@ -23,12 +23,12 @@ public class ActionDataBase {
     public void insertTotalData(Student student) throws SQLException {
         var conn = MConnection.getInstance().getConnection();
         Statement stm = conn.createStatement();
-        stm.executeUpdate("update Customer set Address = '"
+        stm.executeUpdate("update Customer set Address = N'"
                 + student.getAddress() + "'," + "Phone ='" + student.getPhone() +"',"
                 + "FullName = N'"  + student.getFullName() + "',"
                 + "Email = '"  + student.getEmail() + "'," + "Facebook ='" + student.getFacebook() +"',"
                 +"DateOfBirth = '"  + student.getDateOfBirth() + "'," + "Age ='" + student.getAge() +"',"
-                +"Gender = '"  + student.getGender() + "'," + "Edu ='" + student.getEdu() +"'"
+                +"Gender = '"  + student.getGender() + "'," + "Edu =N'" + student.getEdu() +"'"
                 + "where UserName =" + "'" + student.getUserName() + "'");
         System.out.println("Update total successful");
     }
