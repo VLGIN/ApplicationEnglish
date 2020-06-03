@@ -1,38 +1,25 @@
 package sample.Test;
 
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.KeySpec;
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.Scanner;
 
 public class kgk {
-    public static void main(String[] args) throws IOException {
-//        Exercise test=new Exercise("src/sample/Test/data.txt");
-//        String str=test.getData();
-//        String arr[]=str.split(" ");
-//        String[] removedNull = Arrays.stream(arr)
-//                .filter(value ->
-//                        value != null && value.length() > 0
-//                )
-//                .toArray(size -> new String[size]);
-//
-//        System.out.println(Arrays.toString(arr));
-//        System.out.println(Arrays.toString(removedNull));
-
-//        String a="dao             minh              khanh";
-//
-//        Object s[][]=new Object[2][2];
-//        s[0][0]=new String("dkm    kdkdk");
-//        s[0][1]=8;
-//        int k= Integer.parseInt((String)s[0][1]);
-//        System.out.println(k);
-//        System.out.println(Arrays.stream(a.split(" ")).
-//                filter(values->values!=null&&values.length()>0).toArray(size->new String[size]).length);
-//        Exercise newE=new Exercise("src/sample/Test/data.txt");
-//        String a=newE.getData();
-//        System.out.println(Arrays.toString(newE.getGuide()));
-//        System.out.println(Arrays.toString(newE.getIndexFirstForEachLine()));
-//        System.out.println(a);
-        char a='i';
-        System.out.println(Character.toUpperCase(a));
+    public static void main(String[] args) throws Exception {
+//        HashPass hashPass=new HashPass();
+//        Scanner scanner=new Scanner(System.in);
+//        String pass=scanner.nextLine();
+//        String temp=hashPass.getSaltedHash(pass);
+//        System.out.println(temp);
+//        String temp2=scanner.nextLine();
+//        System.out.println(hashPass.check(temp2,temp));
     }
 }
