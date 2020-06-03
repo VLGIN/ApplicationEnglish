@@ -131,11 +131,11 @@ public class HistoryController implements Initializable {
         return series;
     }
     public void logout(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("loginDemo.fxml"));
         Stage primaryStage = (Stage)((Node) event.getSource()).getScene().getWindow();
         primaryStage.setTitle("Hust English App");
-        Scene scene = new Scene(root, 400, 600);
-        scene.getStylesheets().add(Main.class.getResource("application.css").toExternalForm());
+        Scene scene = new Scene(root, 700, 500);
+      //  scene.getStylesheets().add(Main.class.getResource("application.css").toExternalForm());
 
         Image image = new Image(getClass().getResourceAsStream("book.png"));
         primaryStage.getIcons().add(image);
