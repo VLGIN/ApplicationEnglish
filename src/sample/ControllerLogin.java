@@ -17,11 +17,18 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
 import java.io.IOException;
 import java.net.URL;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.KeySpec;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 
 public class ControllerLogin implements Initializable {
     @FXML
@@ -78,7 +85,9 @@ public class ControllerLogin implements Initializable {
             newNode.setVisible(true);
         }
     }
-    public boolean signUp() throws SQLException {
+
+
+    public boolean signUp() throws Exception {
         if(signID.getText().equals("")||signPass.getText().equals("")
                 ||signCPass.getText().equals("")){
             baoLoi.setFill(Color.RED);
@@ -104,23 +113,25 @@ public class ControllerLogin implements Initializable {
         }
     }
     // vào màn hình chính
-    public void enter(ActionEvent event) throws IOException, SQLException {
+    public void enter(ActionEvent event) throws Exception {
         if(signUp() == true){
             setSceneHome(event);
         }
     }
-    public void checkLogin() throws SQLException {
+    public void checkLogin() throws Exception {
 
-       String pass = action.checkLogin(loginID.getText());
-       System.out.println(pass);
-        if(loginPass.getText().equals(pass)){
+        String pass = action.checkLogin(loginID.getText());
+        System.out.println(pass);
+        HashPass hashPass=new HashPass();
+
+        if(hashPass.check(loginPass.getText(),pass)){
             verifyLogin = true;
         }
         else {
             verifyLogin = false;
         }
     }
-    public void click(ActionEvent event) throws SQLException {
+    public void click(ActionEvent event) throws Exception {
         checkLogin();
         try{
             if(verifyLogin == false){
