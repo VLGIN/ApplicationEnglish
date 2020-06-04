@@ -120,15 +120,19 @@ public class ControllerLogin implements Initializable {
     }
     public void checkLogin() throws Exception {
 
-        String pass = action.checkLogin(loginID.getText());
-        System.out.println(pass);
-        HashPass hashPass=new HashPass();
-
-        if(hashPass.check(loginPass.getText(),pass)){
-            verifyLogin = true;
-        }
-        else {
+        if(loginID.getText().equals("")||loginPass.getText().equals("")){
             verifyLogin = false;
+        }else {
+            String pass = action.checkLogin(loginID.getText());
+            System.out.println(pass);
+            HashPass hashPass = new HashPass();
+
+            if(hashPass.check(loginPass.getText(),pass)){
+                verifyLogin = true;
+            }
+            else {
+                verifyLogin = false;
+            }
         }
     }
     public void click(ActionEvent event) throws Exception {

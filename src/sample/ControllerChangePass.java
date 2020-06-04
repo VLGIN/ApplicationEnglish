@@ -44,6 +44,11 @@ public class ControllerChangePass implements Initializable {
             baoLoi.setText("Password is not incorrect.");
             return false;
         }
+        else if(newPass.getText().equals("")||confirmPass.getText().equals("")){
+            baoLoi.setFill(Color.RED);
+            baoLoi.setText("Password mustn't null.");
+            return false;
+        }
         else if(!(newPass.getText()).equals(confirmPass.getText())){
             baoLoi.setFill(Color.RED);
             baoLoi.setText("Password does not match.");
