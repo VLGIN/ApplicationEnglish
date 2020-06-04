@@ -1,4 +1,4 @@
-package sample;
+package sample.Controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,11 +12,10 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import sample.Class.ActionDataBase;
+import sample.Class.Student;
 
-import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
@@ -40,7 +39,7 @@ public class ControllerAccount implements Initializable {
 
 
     public void ChangePassword(ActionEvent event) throws IOException{
-        Parent root  = FXMLLoader.load(getClass().getResource("ChangesPassWord.fxml"));
+        Parent root  = FXMLLoader.load(getClass().getResource("../Fxml/ChangesPassWord.fxml"));
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         window.setTitle("English Application");
@@ -48,10 +47,10 @@ public class ControllerAccount implements Initializable {
         window.show();
     }
     public void setSceneHome(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../Fxml/home.fxml"));
         Stage window = (Stage)((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root,1083,690);
-        window.getIcons().add(new Image(getClass().getResourceAsStream("book.png")));
+        window.getIcons().add(new Image(getClass().getResourceAsStream("../book.png")));
         window.setTitle("English Application");
         window.setScene(scene);
         window.show();

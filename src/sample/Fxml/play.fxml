@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="1083.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerPlayVideo">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="1083.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.ControllerPlayVideo">
    <children>
       <MediaView fx:id="movie" fitHeight="100.0" fitWidth="100.0" layoutX="38.0" layoutY="286.0" />
       <AnchorPane layoutX="159.0" layoutY="530.0" prefHeight="162.0" prefWidth="747.0" style="-fx-background-color: #29B6F6;">
@@ -50,7 +50,7 @@
                      <graphic>
                         <ImageView fitHeight="26.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@photo/replay.png" />
+                              <Image url="@../photo/replay.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -59,7 +59,7 @@
                      <graphic>
                         <ImageView fitHeight="25.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@photo/play2.png" />
+                              <Image url="@../photo/play2.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -70,7 +70,7 @@
                   </Button>
                   <ImageView fitHeight="39.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@photo/volume1.jpg" />
+                        <Image url="@../photo/volume1.jpg" />
                      </image>
                      <HBox.margin>
                         <Insets top="5.0" />
@@ -90,7 +90,7 @@
       </AnchorPane>
       <ImageView fitHeight="46.0" fitWidth="32.0" layoutX="38.0" layoutY="230.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Image/left-arrow.png" />
+            <Image url="@../../Image/left-arrow.png" />
          </image>
       </ImageView>
       <Pane layoutX="-1.0" prefHeight="220.0" prefWidth="1083.0" style="-fx-background-color: #00BFFF;">
@@ -107,7 +107,7 @@
             </Label>
             <ImageView fitHeight="178.0" fitWidth="119.0" layoutX="52.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@photo/book1.png" />
+                  <Image url="@../photo/book1.png" />
                </image>
             </ImageView>
          </children>
@@ -116,7 +116,7 @@
          <graphic>
             <ImageView fitHeight="32.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Image/left-arrow.png" />
+                  <Image url="@../../Image/left-arrow.png" />
                </image>
             </ImageView>
          </graphic>

@@ -1,4 +1,4 @@
-package sample;
+package sample.Class;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

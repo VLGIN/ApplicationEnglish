@@ -1,11 +1,6 @@
-package sample;
-
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
+package sample.Class;
 
 import java.sql.Date;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 public class Student {
     private int ID;

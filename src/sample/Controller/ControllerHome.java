@@ -1,4 +1,4 @@
-package sample;
+package sample.Controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,10 +10,10 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import sample.Class.Student;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class ControllerHome implements Initializable {
@@ -23,16 +23,16 @@ public class ControllerHome implements Initializable {
     private Student student;
 
     public void setSceneChallenge(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("challenge.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../Fxml/challenge.fxml"));
         Stage window = (Stage)((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root,1083,690);
-        window.getIcons().add(new Image(getClass().getResourceAsStream("book.png")));
+        window.getIcons().add(new Image(getClass().getResourceAsStream("../book.png")));
         window.setTitle("English Application");
         window.setScene(scene);
         window.show();
     }
     public void Account(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Accounts.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../Fxml/Accounts.fxml"));
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         window.setTitle("English Application");
@@ -41,33 +41,33 @@ public class ControllerHome implements Initializable {
     }
 
     public void setSceneHistory(ActionEvent event) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("History.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../Fxml/History.fxml"));
         Stage window = (Stage)((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root, 1083, 690);
-        window.getIcons().add(new Image(getClass().getResourceAsStream("book.png")));
+        window.getIcons().add(new Image(getClass().getResourceAsStream("../book.png")));
         window.setTitle("English Application");
         window.setScene(scene);
         window.show();
     }
 
     public void setSceneDocument(ActionEvent event) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("document.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../Fxml/document.fxml"));
         Stage window = (Stage)((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root, 1083, 690);
-        window.getIcons().add(new Image(getClass().getResourceAsStream("book.png")));
+        window.getIcons().add(new Image(getClass().getResourceAsStream("../book.png")));
         window.setTitle("Hust English App");
         window.setScene(scene);
         window.show();
     }
 
     public void setSceneLogin(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("loginDemo.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../Fxml/loginDemo.fxml"));
         Stage primaryStage = (Stage)((Node) event.getSource()).getScene().getWindow();
         primaryStage.setTitle("English Application");
         Scene scene = new Scene(root, 700, 500);
       //  scene.getStylesheets().add(Main.class.getResource("application.css").toExternalForm());
 
-        Image image = new Image(getClass().getResourceAsStream("book.png"));
+        Image image = new Image(getClass().getResourceAsStream("../book.png"));
         primaryStage.getIcons().add(image);
 
         primaryStage.setScene(scene);
@@ -80,10 +80,10 @@ public class ControllerHome implements Initializable {
     }
 
     public void setSceneHome(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../Fxml/home.fxml"));
         Stage window = (Stage)((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root,1083,690);
-        window.getIcons().add(new Image(getClass().getResourceAsStream("book.png")));
+        window.getIcons().add(new Image(getClass().getResourceAsStream("../book.png")));
         window.setTitle("English Application");
         window.setScene(scene);
         window.show();

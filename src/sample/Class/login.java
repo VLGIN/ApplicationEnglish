@@ -1,4 +1,4 @@
-package sample;
+package sample.Class;
 
 public class login {
     private String usename;

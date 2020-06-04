@@ -1,6 +1,5 @@
-package sample;
+package sample.Controller;
 
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,6 +24,9 @@ import java.util.ResourceBundle;
 
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import sample.Class.ActionDataBase;
+import sample.Class.History;
+import sample.Class.Student;
 
 
 public class HistoryController implements Initializable {
@@ -131,13 +133,13 @@ public class HistoryController implements Initializable {
         return series;
     }
     public void logout(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("loginDemo.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../Fxml/loginDemo.fxml"));
         Stage primaryStage = (Stage)((Node) event.getSource()).getScene().getWindow();
         primaryStage.setTitle("Hust English App");
         Scene scene = new Scene(root, 700, 500);
       //  scene.getStylesheets().add(Main.class.getResource("application.css").toExternalForm());
 
-        Image image = new Image(getClass().getResourceAsStream("book.png"));
+        Image image = new Image(getClass().getResourceAsStream("../book.png"));
         primaryStage.getIcons().add(image);
 
         primaryStage.setScene(scene);
@@ -161,10 +163,10 @@ public class HistoryController implements Initializable {
     }
 
     public void setSceneHome(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../Fxml/home.fxml"));
         Stage window = (Stage)((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root,1083,690);
-        window.getIcons().add(new Image(getClass().getResourceAsStream("book.png")));
+        window.getIcons().add(new Image(getClass().getResourceAsStream("../book.png")));
         window.setTitle("Hust English App");
         window.setScene(scene);
         window.show();

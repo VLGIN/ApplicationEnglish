@@ -1,4 +1,4 @@
-package sample;
+package sample.Controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,17 +9,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import sample.Class.ActionDataBase;
+import sample.Class.HashPass;
+import sample.Class.Student;
 
 import java.io.IOException;
 import java.net.URL;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class ControllerChangePass implements Initializable {
@@ -73,13 +72,13 @@ public class ControllerChangePass implements Initializable {
         }
     }
     public void setSceneLogin(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("loginDemo.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../Fxml/loginDemo.fxml"));
         Stage primaryStage = (Stage)((Node) event.getSource()).getScene().getWindow();
         primaryStage.setTitle("English Application");
         Scene scene = new Scene(root, 700, 500);
        // scene.getStylesheets().add(Main.class.getResource("application.css").toExternalForm());
 
-        Image image = new Image(getClass().getResourceAsStream("book.png"));
+        Image image = new Image(getClass().getResourceAsStream("../book.png"));
         primaryStage.getIcons().add(image);
 
         primaryStage.setScene(scene);
@@ -95,10 +94,10 @@ public class ControllerChangePass implements Initializable {
         setSceneHome(event);
     }
     public void setSceneHome(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../Fxml/home.fxml"));
         Stage window = (Stage)((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root,1083,690);
-        window.getIcons().add(new Image(getClass().getResourceAsStream("book.png")));
+        window.getIcons().add(new Image(getClass().getResourceAsStream("../book.png")));
         window.setTitle("English Application");
         window.setScene(scene);
         window.show();

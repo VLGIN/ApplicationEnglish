@@ -1,4 +1,4 @@
-package sample;
+package sample.Class;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class MConnection {
 //    private final String DBNAM = "Tutorial";
     private final String USER = "sa";
-    private final String PASS = "20102000";
+    private final String PASS = "123";
     private final String MURL = "jdbc:sqlserver://localhost:1433;databaseName=EnglishApp";
 
 

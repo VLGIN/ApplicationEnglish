@@ -1,4 +1,4 @@
-package sample;
+package sample.Controller;
 
 import javafx.application.Platform;
 import javafx.beans.InvalidationListener;
@@ -19,6 +19,9 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import sample.Class.ActionDataBase;
+import sample.Class.Exercise;
+import sample.Class.Student;
 
 import java.io.File;
 import java.io.IOException;
@@ -130,10 +133,10 @@ public class ControllerPlayVideo implements Initializable {
         myTimer.cancel();
     }
     public void setSceneChallenge(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("challenge.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../Fxml/challenge.fxml"));
         Stage window = (Stage)((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root,1083,690);
-        window.getIcons().add(new Image(getClass().getResourceAsStream("book.png")));
+        window.getIcons().add(new Image(getClass().getResourceAsStream("../book.png")));
         window.setTitle("English Application");
         window.setScene(scene);
         window.show();
@@ -396,10 +399,10 @@ public class ControllerPlayVideo implements Initializable {
 
             updateLessonComplete();
 
-            Parent root = FXMLLoader.load(getClass().getResource("challenge.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("../Fxml/challenge.fxml"));
             Stage window = (Stage)time.getScene().getWindow();
             Scene scene = new Scene(root,1083,690);
-            window.getIcons().add(new Image(getClass().getResourceAsStream("book.png")));
+            window.getIcons().add(new Image(getClass().getResourceAsStream("../book.png")));
             window.setTitle("English Application");
             window.setScene(scene);
             window.show();
@@ -412,10 +415,10 @@ public class ControllerPlayVideo implements Initializable {
             alert.setContentText("Your score is "+result+".You haven't overcome this challenge. ");
             alert.showAndWait();
 
-            Parent root = FXMLLoader.load(getClass().getResource("play.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("../Fxml/play.fxml"));
             Stage window = (Stage)time.getScene().getWindow();
             Scene scene = new Scene(root,1083,690);
-            window.getIcons().add(new Image(getClass().getResourceAsStream("book.png")));
+            window.getIcons().add(new Image(getClass().getResourceAsStream("../book.png")));
             window.setTitle("English Application");
             window.setScene(scene);
             window.show();

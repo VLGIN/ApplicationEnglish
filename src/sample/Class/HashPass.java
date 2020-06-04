@@ -1,4 +1,4 @@
-package sample;
+package sample.Class;
 
 import org.apache.commons.codec.binary.Base64;
 

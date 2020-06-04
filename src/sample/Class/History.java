@@ -1,4 +1,4 @@
-package sample;
+package sample.Class;
 public class History{
     private float diem;
     private int vong;
