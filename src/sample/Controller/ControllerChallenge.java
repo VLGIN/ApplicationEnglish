@@ -1,4 +1,4 @@
-package sample;
+package sample.Controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,6 +16,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import sample.Class.Student;
 
 import java.io.IOException;
 import java.net.URL;
@@ -55,10 +56,10 @@ public class ControllerChallenge implements Initializable {
         setSceneHome(event);
     }
     public void setSceneHome(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../Fxml/home.fxml"));
         Stage window = (Stage)((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root,1083,690);
-        window.getIcons().add(new Image(getClass().getResourceAsStream("book.png")));
+        window.getIcons().add(new Image(getClass().getResourceAsStream("../book.png")));
         window.setTitle("English Application");
         window.setScene(scene);
         window.show();
@@ -131,13 +132,13 @@ public class ControllerChallenge implements Initializable {
         student = null;
     }
     public void setSceneLogin(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("loginDemo.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../Fxml/loginDemo.fxml"));
         Stage primaryStage = (Stage)((Node) event.getSource()).getScene().getWindow();
         primaryStage.setTitle("English Application");
         Scene scene = new Scene(root, 700, 500);
        // scene.getStylesheets().add(Main.class.getResource("application.css").toExternalForm());
 
-        Image image = new Image(getClass().getResourceAsStream("book.png"));
+        Image image = new Image(getClass().getResourceAsStream("../book.png"));
         primaryStage.getIcons().add(image);
 
         primaryStage.setScene(scene);
@@ -195,10 +196,10 @@ public class ControllerChallenge implements Initializable {
         }
     }
     public void setSceneAudio(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("play.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../Fxml/play.fxml"));
         Stage window = (Stage)((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root,1083,690);
-        window.getIcons().add(new Image(getClass().getResourceAsStream("book.png")));
+        window.getIcons().add(new Image(getClass().getResourceAsStream("../book.png")));
         window.setTitle("English Application");
         window.setScene(scene);
         window.show();

@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane fx:id="stackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerLogin">
+<StackPane fx:id="stackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.ControllerLogin">
    <children>
       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0">
          <left>
@@ -21,7 +21,7 @@
                <children>
                   <ImageView fitHeight="114.0" fitWidth="150.0" layoutX="118.0" layoutY="144.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@photo/book1.png" />
+                        <Image url="@../photo/book1.png" />
                      </image>
                   </ImageView>
                   <Text fill="#fff5f5" layoutX="82.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="English Application">
@@ -37,7 +37,7 @@
                <children>
                   <ImageView fitHeight="62.0" fitWidth="108.0" layoutX="144.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@photo/teamwork.png" />
+                        <Image url="@../photo/teamwork.png" />
                      </image>
                   </ImageView>
                   <TextField fx:id="loginID" layoutX="117.0" layoutY="207.0" prefHeight="27.0" prefWidth="181.0" promptText="User Name" style="-fx-background-color: transparent; -fx-border-color: #0589ff; -fx-border-width: 0px 0px 2px 0px;" />
@@ -48,12 +48,12 @@
                   </Text>
                   <ImageView fitHeight="31.0" fitWidth="35.0" layoutX="71.0" layoutY="205.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@photo/user.png" />
+                        <Image url="@../photo/user.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="29.0" fitWidth="38.0" layoutX="72.0" layoutY="249.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@photo/key1.png" />
+                        <Image url="@../photo/key1.png" />
                      </image>
                   </ImageView>
                   <PasswordField fx:id="loginPass" layoutX="115.0" layoutY="251.0" prefHeight="26.0" prefWidth="182.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #0589ff; -fx-border-width: 0px 0px 2px 0px;" />
@@ -122,7 +122,7 @@
                      <graphic>
                         <ImageView fitHeight="26.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../Image/left-arrow.png" />
+                              <Image url="@../../Image/left-arrow.png" />
                            </image>
                         </ImageView>
                      </graphic>

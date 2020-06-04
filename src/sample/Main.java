@@ -6,8 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-
-import java.io.InputStream;
+import sample.Class.ActionDataBase;
 
 public class Main extends Application {
    // public final static int MAX = 10;
@@ -15,7 +14,7 @@ public class Main extends Application {
     public ActionDataBase action = new ActionDataBase();
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("loginDemo.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Fxml/loginDemo.fxml"));
         primaryStage.setTitle("English Application");
         Scene scene = new Scene(root, 700, 500);
         //scene.getStylesheets().add(Main.class.getResource("application.css").toExternalForm());
