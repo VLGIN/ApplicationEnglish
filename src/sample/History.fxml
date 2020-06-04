@@ -21,12 +21,12 @@
     <children>
         <Pane layoutY="-1.0" prefHeight="211.0" prefWidth="1094.0" style="-fx-background-color: #00BFFF;">
             <children>
-                <Label layoutX="199.0" layoutY="48.0" text="KeepLearning" textFill="#faf7f7">
+                <Label layoutX="199.0" layoutY="66.0" text="BKEN" textFill="#faf7f7">
                     <font>
                         <Font size="48.0" />
                     </font>
                 </Label>
-                <Label layoutX="199.0" layoutY="129.0" text="Hust Student" textFill="#f2ecec">
+                <Label layoutX="199.0" layoutY="129.0" text="Keep Learning" textFill="#f2ecec">
                     <font>
                         <Font size="20.0" />
                     </font>

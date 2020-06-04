@@ -1,8 +1,7 @@
 package sample;
 
-import sample.MConnection;
-import sample.Student;
-
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -23,12 +22,12 @@ public class ActionDataBase {
     public void insertTotalData(Student student) throws SQLException {
         var conn = MConnection.getInstance().getConnection();
         Statement stm = conn.createStatement();
-        stm.executeUpdate("update Customer set Address = '"
+        stm.executeUpdate("update Customer set Address = N'"
                 + student.getAddress() + "'," + "Phone ='" + student.getPhone() +"',"
                 + "FullName = N'"  + student.getFullName() + "',"
                 + "Email = '"  + student.getEmail() + "'," + "Facebook ='" + student.getFacebook() +"',"
                 +"DateOfBirth = '"  + student.getDateOfBirth() + "'," + "Age ='" + student.getAge() +"',"
-                +"Gender = '"  + student.getGender() + "'," + "Edu ='" + student.getEdu() +"'"
+                +"Gender = '"  + student.getGender() + "'," + "Edu =N'" + student.getEdu() +"'"
                 + "where UserName =" + "'" + student.getUserName() + "'");
         System.out.println("Update total successful");
     }
@@ -87,13 +86,14 @@ public class ActionDataBase {
         System.out.println("Update sign up successful");
     }
 
-    public void setSignUp(Student student,String userName,String password,String fullName,String email){
+    public void setSignUp(Student student,String userName,String password,String fullName,String email) throws Exception {
         /*this.userName = userName;
         this.password = password;
         this.fullName = fullName;
         this.email = email;*/
+        HashPass hashPass=new HashPass();
         student.setUserName(userName);
-        student.setPassword(password);
+        student.setPassword(hashPass.getSaltedHash(password));
         student.setFullName(fullName);
         student.setEmail(email);
     }

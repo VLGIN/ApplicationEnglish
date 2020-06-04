@@ -27,7 +27,7 @@ public class ControllerHome implements Initializable {
         Stage window = (Stage)((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root,1083,690);
         window.getIcons().add(new Image(getClass().getResourceAsStream("book.png")));
-        window.setTitle("Hust English App");
+        window.setTitle("English Application");
         window.setScene(scene);
         window.show();
     }
@@ -35,7 +35,7 @@ public class ControllerHome implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("Accounts.fxml"));
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
-        window.setTitle("Accounts");
+        window.setTitle("English Application");
         window.setScene(scene);
         window.show();
     }
@@ -45,7 +45,7 @@ public class ControllerHome implements Initializable {
         Stage window = (Stage)((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root, 1083, 690);
         window.getIcons().add(new Image(getClass().getResourceAsStream("book.png")));
-        window.setTitle("Hust English App");
+        window.setTitle("English Application");
         window.setScene(scene);
         window.show();
     }
@@ -63,7 +63,7 @@ public class ControllerHome implements Initializable {
     public void setSceneLogin(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("loginDemo.fxml"));
         Stage primaryStage = (Stage)((Node) event.getSource()).getScene().getWindow();
-        primaryStage.setTitle("Hust English App");
+        primaryStage.setTitle("English Application");
         Scene scene = new Scene(root, 700, 500);
       //  scene.getStylesheets().add(Main.class.getResource("application.css").toExternalForm());
 
@@ -84,7 +84,7 @@ public class ControllerHome implements Initializable {
         Stage window = (Stage)((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root,1083,690);
         window.getIcons().add(new Image(getClass().getResourceAsStream("book.png")));
-        window.setTitle("Hust English App");
+        window.setTitle("English Application");
         window.setScene(scene);
         window.show();
     }

@@ -17,6 +17,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
@@ -35,8 +37,9 @@ public class ControllerChangePass implements Initializable {
     //private Student student;
 
 
-    public boolean check(Student a){
-        if(!(changePass.getText()).equals(a.getPassword())){
+    public boolean check(Student a) throws Exception {
+        HashPass hashPass=new HashPass();
+        if(hashPass.check(changePass.getText(),a.getPassword())==false){
             baoLoi.setFill(Color.RED);
             baoLoi.setText("Password is not incorrect.");
             return false;
@@ -50,10 +53,12 @@ public class ControllerChangePass implements Initializable {
             return true;
         }
     }
-    public void setChangePass(ActionEvent event) throws SQLException, IOException {
+    public void setChangePass(ActionEvent event) throws Exception {
         Student a = student;
         if(check(a)){
-            action.updatePass(newPass.getText(),a);
+            HashPass hashPass=new HashPass();
+
+            action.updatePass(hashPass.getSaltedHash(newPass.getText()),a);
             Alert hi = new Alert(Alert.AlertType.INFORMATION);
             hi.setTitle("Update password");
             hi.setHeaderText("Log out");
@@ -65,7 +70,7 @@ public class ControllerChangePass implements Initializable {
     public void setSceneLogin(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("loginDemo.fxml"));
         Stage primaryStage = (Stage)((Node) event.getSource()).getScene().getWindow();
-        primaryStage.setTitle("Hust English App");
+        primaryStage.setTitle("English Application");
         Scene scene = new Scene(root, 700, 500);
        // scene.getStylesheets().add(Main.class.getResource("application.css").toExternalForm());
 
@@ -89,7 +94,7 @@ public class ControllerChangePass implements Initializable {
         Stage window = (Stage)((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root,1083,690);
         window.getIcons().add(new Image(getClass().getResourceAsStream("book.png")));
-        window.setTitle("Hust English App");
+        window.setTitle("English Application");
         window.setScene(scene);
         window.show();
     }
