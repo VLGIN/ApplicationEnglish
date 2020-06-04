@@ -119,7 +119,7 @@ public class ControllerLogin implements Initializable {
             System.out.println(pass);
             HashPass hashPass = new HashPass();
 
-            if(hashPass.check(loginPass.getText(),pass)){
+            if(hashPass.checkPassword(loginPass.getText(),pass)){
                 verifyLogin = true;
             }
             else {

@@ -14,12 +14,12 @@ import java.util.Scanner;
 
 public class kgk {
     public static void main(String[] args) throws Exception {
-//        HashPass hashPass=new HashPass();
-//        Scanner scanner=new Scanner(System.in);
-//        String pass=scanner.nextLine();
-//        String temp=hashPass.getSaltedHash(pass);
-//        System.out.println(temp);
-//        String temp2=scanner.nextLine();
-//        System.out.println(hashPass.check(temp2,temp));
+
+        Scanner scanner=new Scanner(System.in);
+        hash hashPass= new hash();
+        String pass=scanner.nextLine();
+        String temp=hashPass.hashPassword(pass);
+        System.out.println(temp.length());
+        System.out.println(temp);
     }
 }

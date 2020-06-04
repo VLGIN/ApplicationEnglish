@@ -1,8 +1,8 @@
-package sample.Class;
+package sample.Test;
 
 import org.mindrot.jbcrypt.BCrypt;
 
-public class HashPass {
+public class hash {
     private static int workload = 12;
 
     public static String hashPassword(String password_plaintext) {

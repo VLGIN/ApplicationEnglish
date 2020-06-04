@@ -91,7 +91,7 @@ public class ActionDataBase {
         this.email = email;*/
         HashPass hashPass=new HashPass();
         student.setUserName(userName);
-        student.setPassword(hashPass.getSaltedHash(password));
+        student.setPassword(hashPass.hashPassword(password));
         student.setFullName(fullName);
         student.setEmail(email);
     }

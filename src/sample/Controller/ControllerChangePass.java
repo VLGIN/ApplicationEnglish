@@ -38,7 +38,7 @@ public class ControllerChangePass implements Initializable {
 
     public boolean check(Student a) throws Exception {
         HashPass hashPass=new HashPass();
-        if(hashPass.check(changePass.getText(),a.getPassword())==false){
+        if(hashPass.checkPassword(changePass.getText(),a.getPassword())==false){
             baoLoi.setFill(Color.RED);
             baoLoi.setText("Password is not incorrect.");
             return false;
@@ -62,7 +62,7 @@ public class ControllerChangePass implements Initializable {
         if(check(a)){
             HashPass hashPass=new HashPass();
 
-            action.updatePass(hashPass.getSaltedHash(newPass.getText()),a);
+            action.updatePass(hashPass.hashPassword(newPass.getText()),a);
             Alert hi = new Alert(Alert.AlertType.INFORMATION);
             hi.setTitle("Update password");
             hi.setHeaderText("Log out");
