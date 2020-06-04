@@ -50,6 +50,16 @@ public class ControllerHome implements Initializable {
         window.show();
     }
 
+    public void setSceneDocument(ActionEvent event) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("document.fxml"));
+        Stage window = (Stage)((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root, 1083, 690);
+        window.getIcons().add(new Image(getClass().getResourceAsStream("book.png")));
+        window.setTitle("Hust English App");
+        window.setScene(scene);
+        window.show();
+    }
+
     public void setSceneLogin(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("loginDemo.fxml"));
         Stage primaryStage = (Stage)((Node) event.getSource()).getScene().getWindow();
