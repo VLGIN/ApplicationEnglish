@@ -118,7 +118,7 @@
       </ImageView>
       <ImageView fx:id="secondLink" fitHeight="181.0" fitWidth="154.0" layoutX="505.0" layoutY="477.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Image/Jim’s_Toeic_1000_Listening_Comprehension%C2%A0.jpg" />
+            <Image url="@../../Image/Jim’s_Toeic_1000_Listening_Comprehension%C2%A0.jpg" />
          </image>
       </ImageView>
       <Button layoutX="967.0" layoutY="225.0" mnemonicParsing="false" onAction="#setSceneHome" prefHeight="32.0" prefWidth="60.0">
