@@ -39,6 +39,9 @@ public class ControllerPlayVideo implements Initializable {
     private MediaView movie;
 
     @FXML
+    private Text guideText;
+
+    @FXML
     private Button TimeCurrent;
 
     @FXML
@@ -72,6 +75,9 @@ public class ControllerPlayVideo implements Initializable {
     @FXML
     private TextArea guideAnswer;
 
+    @FXML
+    private Text countSuggestion;
+
     public static String path;
 
     public Student student;
@@ -94,6 +100,9 @@ public class ControllerPlayVideo implements Initializable {
     Media media=new Media(new File(video).toURI().toString());
     MediaPlayer mediaPlayer=new MediaPlayer(media);
     private float result=0;
+
+    int countClickGuide=0;
+
     int second =0;
     int minutes=0;
     int hour=0;
@@ -128,6 +137,7 @@ public class ControllerPlayVideo implements Initializable {
 
     public void undo(ActionEvent event) throws IOException {
         i=0;
+        countClickGuide=0;
         setSceneChallenge(event);
         mediaPlayer.pause();
         myTimer.cancel();
@@ -146,7 +156,6 @@ public class ControllerPlayVideo implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         student = ControllerLogin.student;
 
-        System.out.println(Arrays.toString(arr));
         if(line<4){
             guideAnswer.setText("A: "+guide[0]+"\nB: ");
         }
@@ -256,6 +265,22 @@ public class ControllerPlayVideo implements Initializable {
         mediaPlayer.setAutoPlay(true);
     }
 
+    public void clickActionGuide(ActionEvent event){
+        if(countClickGuide>=6){
+            Alert alert=new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("English Application");
+            alert.setHeaderText("WARRING");
+            alert.setContentText("You have exceed 6 times permission to use suggestions");
+            alert.showAndWait();
+            return;
+        }
+        guideText.setText(arr[i]);
+        countClickGuide++;
+        countSuggestion.setText(String.valueOf(countClickGuide));
+
+    }
+
+
     public void updateValues(){
         Platform.runLater(new Runnable() {
             @Override
@@ -271,7 +296,6 @@ public class ControllerPlayVideo implements Initializable {
     }
 
     private int temporary=0;
-    int checkIndexFirst=0;
     public void checkAnswer() throws IOException, SQLException {
         if(temporary==0 &&i==0){
             System.out.println(arr[i]);
@@ -279,7 +303,8 @@ public class ControllerPlayVideo implements Initializable {
         }
         try {
             int a=(int)(arr[i].charAt(0));
-            if(check.getText().length()==1&&a>=65&&a<=90&&level==1){
+            if(check.getText().length()==1&&a>=65&&a<=90){
+
                 char headChar=check.getText().charAt(0);
                 if((int)headChar-32==a){
                     int caretPos=check.getCaretPosition();
@@ -324,7 +349,6 @@ public class ControllerPlayVideo implements Initializable {
                 guideAnswer.setText(guideAnswer.getText() + " " + data2[i]);
                 check.clear();
                 i++;
-                checkIndexFirst = 0;
                 System.out.println(arr[i]);
             }
 
@@ -345,7 +369,8 @@ public class ControllerPlayVideo implements Initializable {
             int time = Integer.parseInt(hourClock.getText().substring(0, hourClock.getText().length()-1))*3600 +
                     Integer.parseInt(minuteClock.getText().substring(0, minuteClock.getText().length()-1))*60 + Integer.parseInt(secondClock.getText());
             double videoduration = mediaPlayer.getTotalDuration().toSeconds();
-            result = (float) (10*(11-time/videoduration)/11);
+            result = (float) ((float) (10*(11-time/(10*videoduration)/11))-countClickGuide*0.2);
+            
             result = Math.round(result*10);
             result = result/10;
             if(result<0)
