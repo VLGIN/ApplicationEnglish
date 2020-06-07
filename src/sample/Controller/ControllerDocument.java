@@ -11,13 +11,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import sample.Class.Student;
 import sample.Main;
 
 import java.applet.AppletContext;
-import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -80,6 +80,59 @@ public class ControllerDocument implements Initializable {
         student = ControllerLogin.student;
         name.setText(student.getFullName());
 
+        firstEbook.setOnMouseClicked(e -> {
+            ControllerDownloadDocument.link = "https://www.anhngumshoa.com/tin-tuc/tai-lieu-luyen-thi-toeic-sach-very-easy-toeic-34868.html";
+            try {
+                setSceneDownload(e);
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        });
+
+        secondEbook.setOnMouseClicked(e -> {
+            ControllerDownloadDocument.link = "https://drive.google.com/file/d/1_fBLexI6l4ArTGy-y1NS6chbDAX-gP1U/view";
+            try {
+                setSceneDownload(e);
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        });
+
+        thirdEbook.setOnMouseClicked(e -> {
+            ControllerDownloadDocument.link = "https://drive.google.com/file/d/1pTHL3DKFW3Pt9RYR9X4JaS92sD0RaPny/view";
+            try {
+                setSceneDownload(e);
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        });
+
+        forthEbook.setOnMouseClicked(e -> {
+            ControllerDownloadDocument.link = "https://www.anhngumshoa.com/tin-tuc/tron-bo-economy-toeic-vol-1-2-3-4-5-ban-dep-giai-chi-tiet-37050.html";
+            try {
+                setSceneDownload(e);
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        });
+
+        firstLink.setOnMouseClicked(e ->{
+            ControllerDownloadDocument.link = "https://drive.google.com/file/d/1C-N9jij3M_Wv9ctcR2ua4w-dyRL0N0OJ/view";
+            try {
+                setSceneDownload(e);
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        });
+
+        secondLink.setOnMouseClicked(e->{
+            ControllerDownloadDocument.link = "https://drive.google.com/file/d/0ByrOdmWCChm_TUcycHhPOEQ0eGc/view";
+            try {
+                setSceneDownload(e);
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        });
     }
 
     public void goToLink(){
@@ -113,5 +166,14 @@ public class ControllerDocument implements Initializable {
         window.setScene(scene);
         window.show();
     }
-    
+
+    public void setSceneDownload(MouseEvent event) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("../Fxml/downloadDocument.fxml"));
+        Stage window = (Stage)((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root, 1083,690);
+        window.getIcons().add(new Image(getClass().getResourceAsStream("../book.png")));
+        window.setTitle("Hust English App");
+        window.setScene(scene);
+        window.show();
+    }
 }
