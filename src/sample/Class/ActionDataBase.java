@@ -36,7 +36,6 @@ public class ActionDataBase {
         stm.executeUpdate("update Customer set PassWord = '"
                 + password +"'"
                 + "where UserName =" + "'" + student.getUserName() + "'");
-        System.out.println("Update password successful");
     }
 
     public boolean haveUserName(String user) throws SQLException {
@@ -46,7 +45,6 @@ public class ActionDataBase {
         var result = conn.prepareStatement(sql);
         var resultSet = result.executeQuery();
         if(resultSet.next()){
-            System.out.println(resultSet.getString("UserName") + " already exists");
             return true;
         }
         else{
@@ -81,7 +79,6 @@ public class ActionDataBase {
         stm.executeUpdate("insert into Customer(UserName,PassWord,FullName,Email) values ('"+
                 student.getUserName()+"','"+student.getPassword()+"',N'"+student.getFullName()+"','"
                 +student.getEmail()+ "')");
-        System.out.println("Update sign up successful");
     }
 
     public void setSignUp(Student student,String userName,String password,String fullName,String email) throws Exception {
@@ -112,7 +109,6 @@ public class ActionDataBase {
                 +  +value + "'"
                 + "where ID ='"
                 + student.getID() + "'and Level ='" + student.getLevel() + "';");
-        System.out.println("Update password successful");
     }
     public void insertHistory(float point,Student student) throws SQLException {
         var conn = MConnection.getInstance().getConnection();
@@ -120,7 +116,6 @@ public class ActionDataBase {
         stm.executeUpdate("insert into History(CustomerID,Level,Lesson,Point) values ('"+student.getID()+"','"+student.getLevel()+"','"
                 +student.getBaiso()+"','"+point
                 + "')");
-        System.out.println("Update point to History successful");
     }
 
 
@@ -172,7 +167,6 @@ public class ActionDataBase {
             stm.executeUpdate("insert into State(ID,Level,MaxValue) values ('"+student.getID()+"','"+(i+1)+"','"
                     +1/*+"','"+point*/
                     + "')");
-            System.out.println("Update point to History successful");
         }
     }
 
@@ -183,7 +177,6 @@ public class ActionDataBase {
                 + result +"'"
                 + "where CustomerID ='"
                 + student.getID() + "'and Level ='" + student.getLevel() + "'and Lesson ='" + student.getBaiso() + "';");
-        System.out.println("Update password successful");
     }
     public float getPoint(int iD,int Level,int Baiso) throws SQLException {
         var conn = MConnection.getInstance().getConnection();
@@ -202,6 +195,5 @@ public class ActionDataBase {
             student.setHistoies2(level-1,i,new History(i+1,getPoint(student.getID(),level,i+1)));
             //histories[level-1][i] = new History(i+1,getPoint(student.getID(),level,i+1));
         }
-        System.out.println("Successfully");
     }
 }
