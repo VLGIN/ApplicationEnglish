@@ -7,14 +7,19 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import sample.Class.Student;
+import sample.Main;
 
+import java.applet.AppletContext;
+import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -74,6 +79,10 @@ public class ControllerDocument implements Initializable {
         Tooltip.install(secondLink, lastOne);
         student = ControllerLogin.student;
         name.setText(student.getFullName());
+
+    }
+
+    public void goToLink(){
     }
 
     public void logout(ActionEvent event) throws IOException {
