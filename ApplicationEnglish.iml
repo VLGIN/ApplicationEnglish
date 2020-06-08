@@ -10,6 +10,5 @@
     <orderEntry type="library" name="mssql-jdbc-8.2.2.jre13" level="project" />
     <orderEntry type="library" name="jbcrypt-0.3m" level="project" />
     <orderEntry type="library" name="lib" level="project" />
-    <orderEntry type="library" name="mssql-jdbc-8.2.0.jre13" level="project" />
   </component>
 </module>
