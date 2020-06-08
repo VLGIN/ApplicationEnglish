@@ -49,6 +49,8 @@ public class ControllerDocument implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        student = ControllerLogin.student;
+        name.setText(student.getFullName());
         Tooltip firstOne = new Tooltip("Đây là cuốn sách tự học TOEIC đầu tiên mà cô khuyên những bạn ở giai đoạn \n bắt đầu học TOEIC nên sử dụng. Thời điểm này các bạn chỉ cần chăm chỉ học Very Easy Toeic là đủ,\n không nên học quá nhiều sách cùng một lúc. Sách Very Easy TOEIC Second Edition được gói\n gọn cung cấp cho các bạn bắt đầu học kiến thức nền tảng về từ vựng, ngữ pháp\n và phát âm. Cuốn sách bao gồm 12 bài học lớn theo từng chủ đề.\n Mỗi bài học cung cấp cho các kiến thức tiếng Anh và bài tập hỗ trợ để bạn luyện\n tập và củng cố kiến thức vừa học.");
         firstEbook.setPickOnBounds(true);
         Tooltip.install(firstEbook, firstOne);

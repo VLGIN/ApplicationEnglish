@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.text.Text;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
@@ -20,12 +21,16 @@ import java.util.ResourceBundle;
 public class ControllerDownloadDocument implements Initializable {
     @FXML
     WebView web;
+    @FXML
+    Text name;
     private Student student;
 
     public static String link;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        student = ControllerLogin.student;
+        name.setText(student.getFullName());
         WebEngine engine = web.getEngine();
         engine.load(link);
     }
