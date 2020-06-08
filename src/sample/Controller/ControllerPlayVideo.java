@@ -369,9 +369,10 @@ public class ControllerPlayVideo implements Initializable {
             int time = Integer.parseInt(hourClock.getText().substring(0, hourClock.getText().length()-1))*3600 +
                     Integer.parseInt(minuteClock.getText().substring(0, minuteClock.getText().length()-1))*60 + Integer.parseInt(secondClock.getText());
             double videoduration = mediaPlayer.getTotalDuration().toSeconds();
-            result = (float) ((float) (10*(11-time/(10*videoduration)/11))-countClickGuide*0.2);
+            result = (float) ((10*(11-time/(10*videoduration))/11));
             
             result = Math.round(result*10);
+            result=Math.round((float)(result/10-0.2*countClickGuide)*10);
             result = result/10;
             if(result<0)
                 result=0;
