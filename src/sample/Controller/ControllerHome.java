@@ -55,7 +55,7 @@ public class ControllerHome implements Initializable {
         Stage window = (Stage)((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root, 1083, 690);
         window.getIcons().add(new Image(getClass().getResourceAsStream("../book.png")));
-        window.setTitle("Hust English App");
+        window.setTitle("English Application");
         window.setScene(scene);
         window.show();
     }
