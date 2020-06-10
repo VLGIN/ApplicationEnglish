@@ -7,6 +7,6 @@ OOP project
 Lưu ý : 
 + nếu bạn sử dụng Intellij Idea  bạn sẽ phải chỉnh sửa lại VM option để thư viện JavaFx có thể hoạt động, link hướng dẫn : https://openjfx.io/openjfx-docs/#install-javafx
 ví dụ với VM option của mình : " --module-path "E:\Java\JavFx\javafx-sdk-14.0.1\lib" --add-modules javafx.controls,javafx.fxml,javafx.media,javafx.web "
-+ bạn sẽ phải vào class Mconnect của project để chỉnh lại tài khoản và mật khẩu của sql (ở đây bọn mình sử dụng Sql Server)
-+ bạn phải import file EnglishApp.bacpac vào cơ sở dữ liệu (file mình đã tải vào trong project)
++ vào class Mconnect của project để chỉnh lại tài khoản và mật khẩu của sql (ở đây bọn mình sử dụng Sql Server)
++ import file EnglishApp.bacpac vào cơ sở dữ liệu (file mình đã tải vào trong project)
 - Cảm ơn các bạn, và chúc các bạn thành công
